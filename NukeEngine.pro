@@ -16,7 +16,8 @@ DEFINES += NUKEENGINE_LIBRARY GLM_ENABLE_EXPERIMENTAL
 
 LIBS += -L/usr/local/lib -lglut -lGL -lGLU -lGLEW -pthread -lboost_thread -lboost_system -lboost_filesystem -llua -ldl -lassimp
 
-INCLUDEPATH += deps/imgui
+INCLUDEPATH += deps/imgui \
+    deps/LuaBridge/Source
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
@@ -37,8 +38,7 @@ SOURCES += \
     deps/lodepng/lodepng_util.cpp \
     deps/lodepng/lodepng.cpp \
     deps/ImGuizmo/ImGuizmo.cpp \
-    deps/ImGuizmo/ImSequencer.cpp \
-    nukeengine.cpp
+    deps/ImGuizmo/ImSequencer.cpp
 
 HEADERS += \
     backend/lua.h \
@@ -109,9 +109,7 @@ HEADERS += \
     deps/lodepng/lodepng.h \
     deps/ImGuizmo/ImGuizmo.h \
     deps/ImGuizmo/ImSequencer.h \
-    API/Model/ray.h \
-    nukeengine_global.h \
-    nukeengine.h
+    API/Model/ray.h
 
 unix {
     target.path = /usr/lib

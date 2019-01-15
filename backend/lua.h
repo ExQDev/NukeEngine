@@ -1,8 +1,8 @@
 #ifndef LUA_H
 #define LUA_H
 #include <lua.hpp>
-#include <boost/filesystem.hpp>
 #include <deps/LuaBridge/Source/LuaBridge/LuaBridge.h>
+#include <boost/filesystem.hpp>
 #include <iostream>
 
 namespace b = boost;
