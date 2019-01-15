@@ -1,0 +1,6 @@
+#ifndef NUKEENGINE_GLOBAL_H
+#define NUKEENGINE_GLOBAL_H
+
+
+
+#endif // NUKEENGINE_GLOBAL_H
