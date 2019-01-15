@@ -1,0 +1,12 @@
+[submodule "deps/assimp"]
+	path = deps/assimp
+	url = https://github.com/assimp/assimp.git
+[submodule "deps/ImGuizmo"]
+	path = deps/ImGuizmo
+	url = https://github.com/CedricGuillemet/ImGuizmo.git
+[submodule "deps/lodepng"]
+	path = deps/lodepng
+	url = https://github.com/lvandeve/lodepng.git
+[submodule "deps/LuaBridge"]
+	path = deps/LuaBridge
+	url = https://github.com/vinniefalco/LuaBridge.git
