@@ -27,7 +27,8 @@ If you see next errors:
 or the same, you need to install development files of needed libraries(e.g. `freeglut`, or `glew` for this case).
 
 If you see smth like this:
-```.../projects/NE/NukeEngine/API/Model/Include.h:3: error: boost/container/list.hpp: No such file or directory
+```
+.../projects/NE/NukeEngine/API/Model/Include.h:3: error: boost/container/list.hpp: No such file or directory
  #include <boost/container/list.hpp>
           ^~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
