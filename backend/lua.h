@@ -1,6 +1,10 @@
 #ifndef LUA_H
 #define LUA_H
+#ifdef __APPLE__
+#include <lua/lua.hpp>
+#else
 #include <lua.hpp>
+#endif
 #include <deps/LuaBridge/Source/LuaBridge/LuaBridge.h>
 #include <boost/filesystem.hpp>
 #include <iostream>

@@ -33,3 +33,26 @@ If you see smth like this:
           ^~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 You need to install boost libraries sources.
+
+#### Building the assimp:
+Int the project dir, goto `deps/assimp`, then:
+
+```
+cmake CMakeLists.txt
+make -j4 install
+```
+
+j4 means that you will use 4 threads for building.
+
+
+### MacOS [Attention!!!]
+
+You will need to do some preparations for building NukeEngine on Mac:
+
++ Install XQuartz - required by freeglut
++ Install homebrew - required for next
++ Install freeglut via brew
++ Install glew via brew
++ Install boost via brew
++ Install assimp via brew (you should better build it own and install build into system, its always fresh)
++ Install other via brew if you cannot install it in another way

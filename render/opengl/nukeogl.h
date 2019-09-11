@@ -3,11 +3,18 @@
 #include "../irender.h"
 #include <input/keyboard.h>
 #include <input/mouse.h>
+#ifdef __APPLE__
+#include <GL/glew.h>
+#include <OpenGL/gl.h>
+#include <OpenGL/glu.h>
+#include <GL/freeglut.h>
+#else
 #include <GL/glew.h>
 #include <GL/gl.h>
 #include <GL/glut.h>
 #include <GL/glu.h>
 #include <GL/freeglut.h>
+#endif
 #include <boost/thread.hpp>
 #include <iostream>
 
@@ -243,7 +250,7 @@ public:
 
     int init(int w, int h)
     {
-        cout << "Render initialization..." << endl;
+        cout << "Render initialization..." << ", width: " << w << ", height: "<< h << endl;
         cout << "Render engine: " << getEngine() << endl;
         cout << "NukeOGL version: " << getVersion() << endl;
         this->width = w;
@@ -258,7 +265,7 @@ public:
         glutInitWindowSize(w, h);
         glutCreateWindow("NukeEngine Editor");
         glutSetIconTitle("logo.ico");
-        cout << get_current_dir_name() << endl;
+//        cout << get_current_dir_name() << endl;
         glutKeyboardFunc(oglkeyboard);
         glutSpecialFunc(oglspecialkeyboard);
         glutKeyboardUpFunc(oglkeyboardup);

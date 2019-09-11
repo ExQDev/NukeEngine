@@ -14,11 +14,20 @@ TEMPLATE = lib
 
 DEFINES += NUKEENGINE_LIBRARY GLM_ENABLE_EXPERIMENTAL
 
+macx{
+LIBS += -L/System/Library -L/Library -L~/Library -L/usr/local/lib -lboost_thread-mt -lboost_system -lboost_filesystem -llua -lassimp -lGLEW -lGLUT -framework OpenGL -framework GLUT -framework Cocoa -framework CoreFoundation
+}
+!macx{
 LIBS += -L/usr/local/lib -lglut -lGL -lGLU -lGLEW -pthread -lboost_thread -lboost_system -lboost_filesystem -llua -ldl -lassimp
+}
 
 INCLUDEPATH += deps/imgui \
-    deps/LuaBridge/Source
+    deps/LuaBridge/Source \
+    deps/glm
 
+macx{
+INCLUDEPATH += /usr/local/include
+}
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
@@ -42,6 +51,29 @@ SOURCES += \
 
 HEADERS += \
     backend/lua.h \
+    deps/glm/glm/common.hpp \
+    deps/glm/glm/exponential.hpp \
+    deps/glm/glm/ext.hpp \
+    deps/glm/glm/fwd.hpp \
+    deps/glm/glm/geometric.hpp \
+    deps/glm/glm/glm.hpp \
+    deps/glm/glm/integer.hpp \
+    deps/glm/glm/mat2x2.hpp \
+    deps/glm/glm/mat2x3.hpp \
+    deps/glm/glm/mat2x4.hpp \
+    deps/glm/glm/mat3x2.hpp \
+    deps/glm/glm/mat3x3.hpp \
+    deps/glm/glm/mat3x4.hpp \
+    deps/glm/glm/mat4x2.hpp \
+    deps/glm/glm/mat4x3.hpp \
+    deps/glm/glm/mat4x4.hpp \
+    deps/glm/glm/matrix.hpp \
+    deps/glm/glm/packing.hpp \
+    deps/glm/glm/trigonometric.hpp \
+    deps/glm/glm/vec2.hpp \
+    deps/glm/glm/vec3.hpp \
+    deps/glm/glm/vec4.hpp \
+    deps/glm/glm/vector_relational.hpp \
     deps/imgui/imconfig.h \
     deps/imgui/imgui.h \
     deps/imgui/imgui_internal.h \
