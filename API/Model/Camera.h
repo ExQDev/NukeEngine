@@ -265,7 +265,12 @@ public:
 		renderer->Far = _far;
 		renderer->Near = _near;
         //renderer->_crosshair = crosshair;
+
+
+        // TODO: It crashes app on MacOS. Fix it.
+#ifndef __APPLE__
         renderer->update();
+#endif
         ProcessKeyboard();
 	}
 	void Reset() {}
