@@ -44,7 +44,7 @@ public:
     bc::list<T*> GetComponents()
 	{
         bc::list<T*> lst;
-        for(auto cmp : lst)
+        for(auto cmp : components)
 			if (auto res = dynamic_cast<T*>(cmp))
 				lst.push_back(res);
 		return lst;
