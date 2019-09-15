@@ -3,7 +3,7 @@
 #define NUKEE_LIGHT_H
 #include "Include.h"
 
-class Light : public Component 
+class Light : public NukeComponent 
 {
 	enum LightType 
 	{

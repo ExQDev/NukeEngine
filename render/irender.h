@@ -9,6 +9,7 @@ namespace b = boost;
 class iRender
 {
     friend class NukeOGL;
+    friend class NukeBGFX;
 private:
     static iRender* _instance;
 public:

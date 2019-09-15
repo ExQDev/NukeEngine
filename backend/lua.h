@@ -5,7 +5,7 @@
 #else
 #include <lua.hpp>
 #endif
-#include <deps/LuaBridge/Source/LuaBridge/LuaBridge.h>
+#include <LuaBridge/LuaBridge.h>
 #include <boost/filesystem.hpp>
 #include <iostream>
 

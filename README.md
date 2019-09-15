@@ -53,6 +53,7 @@ You will need to do some preparations for building NukeEngine on Mac:
 + Install homebrew - required for next
 + Install freeglut via brew
 + Install glew via brew
++ Install glfw via brew
 + Install boost via brew
 + Install assimp via brew (you should better build it own and install build into system, its always fresh)
 + Install other via brew if you cannot install it in another way

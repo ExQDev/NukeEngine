@@ -9,6 +9,8 @@ namespace bc = b::container;
 class KeyBoard
 {
     friend class NukeOGL;
+    friend class NukeBGFX;
+
 private:
     KeyBoard() {}
     ~KeyBoard(){}

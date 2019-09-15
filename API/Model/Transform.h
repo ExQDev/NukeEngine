@@ -4,7 +4,7 @@
 #include "Component.h"
 #include "Vector.h"
 
-class Transform : public Component
+class Transform : public NukeComponent
 {
 public:
 	Vector3 position;

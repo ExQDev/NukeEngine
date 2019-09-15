@@ -8,9 +8,10 @@
 #include <boost/thread.hpp>
 #include <render/irender.h>
 #include <render/opengl/nukeogl.h>
+#include <render/universal/nukebgfx.h>
 #include <boost/bind.hpp>
 
-class Camera : public Component
+class Camera : public NukeComponent
 {
 private:
 	boost::thread* renderThread;
@@ -25,10 +26,10 @@ public:
 	unsigned long int renderLayers;
     bool freeMode;
 
-    Camera() : Component("Camera")
+    Camera() : NukeComponent("Camera")
 	{}
 
-    Camera(iRender *renderer): Component("Camera")
+    Camera(iRender *renderer): NukeComponent("Camera")
 	{
 		this->renderer = renderer;
 		this->renderer->transform = transform;
@@ -41,13 +42,13 @@ public:
 		renderer->fov = fov;
 		renderer->Far = _far;
 		renderer->Near = _near;
-        if(((NukeOGL*)renderer) != NukeOGL::getSingleton())
+        if(((NukeBGFX*)renderer) != NukeBGFX::getSingleton())
             renderer->init(r_width, r_height);
         else
             cout << "[!] Camera of main renderer" << endl;
 	}
 	
-    Camera(GameObject* parent, iRender *renderer) : Component("Camera")
+    Camera(GameObject* parent, iRender *renderer) : NukeComponent("Camera")
 	{
 		this->renderer = renderer;
 		Init(parent);

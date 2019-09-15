@@ -9,6 +9,7 @@ namespace bc = b::container;
 class Mouse
 {
     friend class NukeOGL;
+    friend class NukeBGFX;
 
 private:
     Mouse() {}

@@ -4,14 +4,14 @@
 #include "Include.h"
 #include <render/irender.h>
 
-class MeshRenderer : public Component 
+class MeshRenderer : public NukeComponent 
 {
 
 public:
     Mesh        *mesh;
     Material    *mat;
 
-    MeshRenderer() : Component("MeshRenderer"){}
+    MeshRenderer() : NukeComponent("MeshRenderer"){}
 
     void Init(GameObject* parent){
         transform = &parent->transform;

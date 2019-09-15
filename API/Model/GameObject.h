@@ -8,7 +8,7 @@ namespace bc = boost::container;
 #include "Layers.h"
 #include "ID.h"
 
-class GameObject : public Component
+class GameObject : public NukeComponent
 {
 public:
 	Transform transform = { this };
@@ -18,7 +18,7 @@ public:
 	std::string tag = "Untagged";
 	int layer = Layer::L_DEFAULT;
 
-    bc::list<Component*> components;
+    bc::list<NukeComponent*> components;
     bc::list<GameObject*> children;
 
 	GameObject(std::string name) 
@@ -31,11 +31,11 @@ public:
 
 
 	template<class T>
-	T* GetComponent()
-	{
-		for(auto cmp : components)
-			if (auto res = dynamic_cast<T*>(cmp))
-				return res;
+    T* GetComponent()
+    {
+        for(auto cmp : components)
+            if (auto res = dynamic_cast<T*>(cmp))
+                return res;
 		return nullptr;
 	}
 	
@@ -50,7 +50,7 @@ public:
 		return lst;
 	}
 
-    void AddComponent(Component* cmp){
+    void AddComponent(NukeComponent* cmp){
         cmp->Init(this);
     }
 
