@@ -20,6 +20,33 @@ And this should be all done.
 
 ## Building
 
+### Windows
+
+It is highly recommended to use Visual Studio 2019 (or up) with [vcpkg](https://github.com/Microsoft/vcpkg).
+We suggest to install all dependecies that are submodules via `vcpkg`, to avoid a lot of confilcts and asspain.
+Thus, you should install boost libaraies via `vcpkg`. You can install now whole library, just subs, like `boost-thread` and others.
+If some dependencies could not be resolved, `Visual Studio` will automatically suggest to install it via `vcpkg`.
+In other cases, generate dependency projects as told in their READMEs and chack links to them in solution.
+Whih dependecies are higly recommended to install via vcpkg?:
+* assimp
+* glfw
+* glm
+* lua
+* freeglut
+* glew
+Unfortunately, bgfx, bimg and bx are not avaliable via vcpkg, and you need to build them with your own. Just initialize submodules, then generate Visual Studio projects for them. Also, you can fix broken links to them on NukeEngine solution, if this happened.
+So, try to build it!
+
+> Note: It woulb be better to clone NukeEngine Editor nearby NukeEngine root directory.
+
+> The best hierarchy scheme for solution:
++ [NE]
+  + [NukeEngine] (repo)
+    + .... (files)
+  + [NukeEngine-Editor] (repo)
+    + .... (files)
+
+### Linux
 The build system, used by project, is `qmake`, so you can just use Qt Creator to build it, or even simple qmake, if you have qt tools.
 
 If you see next errors:

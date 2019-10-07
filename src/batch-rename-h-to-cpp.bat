@@ -1,0 +1,1 @@
+FOR /R %%x IN (*.h) DO ren "%%x" *.cpp

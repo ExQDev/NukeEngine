@@ -1,4 +1,15 @@
 build/
+.vs/
+
+*.vcxproj.*
+*.log
+*.tlog
+*.db
+x64/Debug/
+x64/Release/
+Debug/
+Release/
+
 a# This file is used to ignore files which are generated
 # ----------------------------------------------------------------------------
 
