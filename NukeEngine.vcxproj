@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{D26D9F7C-5A3A-4355-BD29-61E0E8F22FAF}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>NukeEngine</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetName>NukeEngine</TargetName>
+    <LinkIncremental>true</LinkIncremental>
+    <IntDir>$(Platform)\$(Configuration)\Intermediate\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>NUKEENGINE</TargetName>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <TargetName>NUKEENGINE</TargetName>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TargetName>NukeEngine</TargetName>
+    <LinkIncremental>false</LinkIncremental>
+    <IntDir>$(Platform)\$(Configuration)\Intermediate\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;NUKEENGINE_EXPORTS;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>./include;./deps/LuaBridge/Source/;./deps;./deps/bx/include;./deps/bgfx/include;./deps/glfw/include;./deps/bx/include/compat/msvc</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>NukeEngine.h;pch.h</ForcedIncludeFiles>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <IgnoreSpecificDefaultLibraries>LIBCMTD</IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;NUKEENGINE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;NUKEENGINE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;NUKEENGINE_EXPORTS;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>./include;./deps/LuaBridge/Source/;./deps;./deps/bx/include;./deps/bgfx/include;./deps/bx/include/compat/msvc</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>NukeEngine.h;pch.h</ForcedIncludeFiles>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <IgnoreSpecificDefaultLibraries>LIBCMTD</IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="deps\imgui\imconfig.h" />
+    <ClInclude Include="deps\imgui\imgui.h" />
+    <ClInclude Include="deps\imgui\imgui_internal.h" />
+    <ClInclude Include="deps\imgui\stb_rect_pack.h" />
+    <ClInclude Include="deps\imgui\stb_textedit.h" />
+    <ClInclude Include="deps\imgui\stb_truetype.h" />
+    <ClInclude Include="framework.h" />
+    <ClInclude Include="include\API\GUI.h" />
+    <ClInclude Include="include\API\Model\Camera.h" />
+    <ClInclude Include="include\API\Model\Clock.h" />
+    <ClInclude Include="include\API\Model\Collider.h" />
+    <ClInclude Include="include\API\Model\Color.h" />
+    <ClInclude Include="include\API\Model\Component.h" />
+    <ClInclude Include="include\API\Model\Game.h" />
+    <ClInclude Include="include\API\Model\GameObject.h" />
+    <ClInclude Include="include\API\Model\ID.h" />
+    <ClInclude Include="include\API\Model\Include.h" />
+    <ClInclude Include="include\API\Model\Layers.h" />
+    <ClInclude Include="include\API\Model\Light.h" />
+    <ClInclude Include="include\API\Model\Material.h" />
+    <ClInclude Include="include\API\Model\Math.h" />
+    <ClInclude Include="include\API\Model\Mesh.h" />
+    <ClInclude Include="include\API\Model\MeshRenderer.h" />
+    <ClInclude Include="include\API\Model\Module.h" />
+    <ClInclude Include="include\API\Model\Package.h" />
+    <ClInclude Include="include\API\Model\ray.h" />
+    <ClInclude Include="include\API\Model\resdb.h" />
+    <ClInclude Include="include\API\Model\Resource.h" />
+    <ClInclude Include="include\API\Model\Scene.h" />
+    <ClInclude Include="include\API\Model\Script.h" />
+    <ClInclude Include="include\API\Model\Shader.h" />
+    <ClInclude Include="include\API\Model\Texture.h" />
+    <ClInclude Include="include\API\Model\Time.h" />
+    <ClInclude Include="include\API\Model\Transform.h" />
+    <ClInclude Include="include\API\Model\Vector.h" />
+    <ClInclude Include="include\backend\lua.h" />
+    <ClInclude Include="include\config.h" />
+    <ClInclude Include="include\gui\gui.h" />
+    <ClInclude Include="include\import\assimporter.h" />
+    <ClInclude Include="include\input\keyboard.h" />
+    <ClInclude Include="include\input\mouse.h" />
+    <ClInclude Include="include\interface\AppInstance.h" />
+    <ClInclude Include="include\interface\EditorInstance.h" />
+    <ClInclude Include="include\interface\EditorMenu\MenuItem.h" />
+    <ClInclude Include="include\interface\EditorMenu\MenuStrip.h" />
+    <ClInclude Include="include\interface\Modular.h" />
+    <ClInclude Include="include\interface\NUKEEInteface.h" />
+    <ClInclude Include="include\render\irender.h" />
+    <ClInclude Include="include\render\opengl\nukeogl.h" />
+    <ClInclude Include="include\render\universal\nukebgfx.h" />
+    <ClInclude Include="NukeEngine.h" />
+    <ClInclude Include="pch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="deps\imgui\imgui.cpp" />
+    <ClCompile Include="deps\imgui\imgui_demo.cpp" />
+    <ClCompile Include="deps\imgui\imgui_draw.cpp" />
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="NukeEngine.cpp" />
+    <ClCompile Include="pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\API\GUI.cpp" />
+    <ClCompile Include="src\API\Model\Camera.cpp" />
+    <ClCompile Include="src\API\Model\Clock.cpp" />
+    <ClCompile Include="src\API\Model\Collider.cpp" />
+    <ClCompile Include="src\API\Model\Color.cpp" />
+    <ClCompile Include="src\API\Model\Component.cpp" />
+    <ClCompile Include="src\API\Model\Game.cpp" />
+    <ClCompile Include="src\API\Model\GameObject.cpp" />
+    <ClCompile Include="src\API\Model\ID.cpp" />
+    <ClCompile Include="src\API\Model\Layers.cpp" />
+    <ClCompile Include="src\API\Model\Light.cpp" />
+    <ClCompile Include="src\API\Model\Material.cpp" />
+    <ClCompile Include="src\API\Model\Math.cpp" />
+    <ClCompile Include="src\API\Model\Mesh.cpp" />
+    <ClCompile Include="src\API\Model\MeshRenderer.cpp" />
+    <ClCompile Include="src\API\Model\Module.cpp" />
+    <ClCompile Include="src\API\Model\Package.cpp" />
+    <ClCompile Include="src\API\Model\ray.cpp" />
+    <ClCompile Include="src\API\Model\resdb.cpp" />
+    <ClCompile Include="src\API\Model\Resource.cpp" />
+    <ClCompile Include="src\API\Model\Scene.cpp" />
+    <ClCompile Include="src\API\Model\Script.cpp" />
+    <ClCompile Include="src\API\Model\Shader.cpp" />
+    <ClCompile Include="src\API\Model\Texture.cpp" />
+    <ClCompile Include="src\API\Model\Time.cpp" />
+    <ClCompile Include="src\API\Model\Transform.cpp" />
+    <ClCompile Include="src\API\Model\Vector.cpp" />
+    <ClCompile Include="src\backend\lua.cpp" />
+    <ClCompile Include="src\config.cpp" />
+    <ClCompile Include="src\gui\gui.cpp" />
+    <ClCompile Include="src\import\assimporter.cpp" />
+    <ClCompile Include="src\input\keyboard.cpp" />
+    <ClCompile Include="src\input\mouse.cpp" />
+    <ClCompile Include="src\interface\AppInstance.cpp" />
+    <ClCompile Include="src\interface\EditorInstance.cpp" />
+    <ClCompile Include="src\interface\EditorMenu\MenuItem.cpp" />
+    <ClCompile Include="src\interface\EditorMenu\MenuStrip.cpp" />
+    <ClCompile Include="src\interface\Modular.cpp" />
+    <ClCompile Include="src\interface\NUKEEInteface.cpp" />
+    <ClCompile Include="src\render\irender.cpp" />
+    <ClCompile Include="src\render\opengl\nukeogl.cpp" />
+    <ClCompile Include="src\render\universal\nukebgfx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="deps\bgfx\.build\projects\vs2019\bgfx.vcxproj">
+      <Project>{6c90947c-58c7-950d-01b4-7b10edc9110f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="deps\bgfx\.build\projects\vs2019\bimg.vcxproj">
+      <Project>{c499947c-b0d0-950d-59bd-7b1045d3110f}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
