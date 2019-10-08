@@ -4,7 +4,7 @@
 
 NUKEENGINE_API struct NukeWindow{
     int w, h;
-    std::string mainFont;
+    char* mainFont;
     bool hierarchy = true,
             console = true,
             browser = true,
@@ -95,11 +95,9 @@ private:
 	Config();
 	~Config();
 public:
-    struct NukeWindow window {};
-    struct NukeTheme theme{};
-    static Config* getSingleton(){
-        static Config instance;
-        return &instance;
-    }
+    NukeWindow window {};
+    NukeTheme theme{};
+	void reload(Config* instance);
+	static Config* getSingleton();
 };
 #endif // CONFIG_H

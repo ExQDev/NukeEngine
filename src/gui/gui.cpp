@@ -10,7 +10,8 @@ ImVec4 GUI::confColor2ImVec(struct confColor cc) {
 	return ImVec4(cc.x, cc.y, cc.z, cc.w);
 }
 
-void GUI::setup() {
+void GUI::setup(ImGuiContext* context) {
+	ImGui::SetCurrentContext(context);
 	if (Config::getSingleton()->theme.isLoaded) {
 		struct NukeTheme* nt = &Config::getSingleton()->theme;
 		ImGuiStyle* style = &ImGui::GetStyle();
@@ -72,12 +73,15 @@ void GUI::setup() {
 	}
 	else
 	{
-		setupDefault();
+		setupDefault(context);
 	}
 }
 
-void GUI::setupDefault() {
+void GUI::setupDefault(ImGuiContext* context) {
+	ImGui::SetCurrentContext(context);
+	cout << "Context is " << ImGui::GetCurrentContext() << endl;
 	ImGuiStyle* style = &ImGui::GetStyle();
+	//cout << "Style:: " << style << endl;
 	style->WindowPadding = ImVec2(15, 15);
 	style->WindowRounding = 0.0f;
 	style->FramePadding = ImVec2(5, 5);

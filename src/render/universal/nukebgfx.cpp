@@ -1,4 +1,15 @@
 #include "render/universal/nukebgfx.h"
+#include <lodepng/lodepng.h>
+
+GLFWimage decodeOneStep(const char* filename) {
+	unsigned error;
+	GLFWimage image;
+
+	error = lodepng_decode32_file(&(image.pixels), (unsigned int*)&(image.width), (unsigned int*)&(image.height), filename);
+	if (error) printf("error %u: %s\n", error, lodepng_error_text(error));
+
+	return image;
+}
 
 NukeBGFX* NukeBGFX::_main;
 
@@ -18,10 +29,15 @@ int NukeBGFX::init(int w, int h) {
 	if (!glfwInit())
 		return 1;
 	glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-	window = glfwCreateWindow(1024, 768, "helloworld", nullptr, nullptr);
+	window = glfwCreateWindow(1024, 768, "NukeEngine Editor", nullptr, nullptr);
 	if (!window)
 		return 1;
 	glfwSetKeyCallback(window, glfw_keyCallback);
+
+	GLFWimage images[2];
+	images[0] = decodeOneStep("res/logo.png");
+	images[1] = decodeOneStep("res/logo.png");
+	glfwSetWindowIcon(window, 2, images);
 
 	// Most graphics APIs must be used on the same thread that created the window.
 	bgfx::renderFrame();

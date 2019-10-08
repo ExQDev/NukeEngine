@@ -2,6 +2,7 @@
 #ifndef NUKEE_APPINSTANCE_H
 #define NUKEE_APPINSTANCE_H
 #include <boost/thread.hpp>
+#include <config.h>
 #include "../API/Model/Camera.h"
 #include "../API/Model/Scene.h"
 #include "../input/keyboard.h"
@@ -19,6 +20,7 @@ public:
 	Scene* currentScene;
     KeyBoard* keyboard;
     Mouse* mouse;
+	Config* config;
     iRender* render;
 
 	virtual bool isEditor();

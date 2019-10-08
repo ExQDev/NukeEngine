@@ -14,8 +14,14 @@ class NUKEENGINE_API AssImporter
 {
 	AssImporter();
 	~AssImporter();
-
 	GameObject* ImportObject(aiNode* node, const aiScene* scene);
+
+public:
+	static AssImporter* getSingleton() {
+		static AssImporter instance;
+		return &instance;
+	}
+	
 	void Import(const char* path);
 };
 #endif // ASSIMPORTER_H

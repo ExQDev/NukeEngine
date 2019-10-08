@@ -7,6 +7,9 @@
 #ifndef NUKEENGINE_H
 #define NUKEENGINE_H
 #ifdef NUKEENGINE_EXPORTS
+#ifdef NUKEENGINE_API
+#undef NUKEENGINE_API
+#endif
 #define NUKEENGINE_API __declspec(dllexport)
 #else
 #define NUKEENGINE_API __declspec(dllimport)

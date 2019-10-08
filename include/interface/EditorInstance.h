@@ -24,7 +24,7 @@ public:
     int manipulationMode = 0;
     int manipulationWorld = 0;
     //bc::list<btups::tuple<string, b::function<void()>>> editorWindows;
-    bc::map<string, b::function<void()>> editorWindows;
+    bc::map<string, b::function<void()>> *editorWindows;
 
 	void PushWindow(string key, boost::function<void()> fWindow);
 	void PopWindow(string key);

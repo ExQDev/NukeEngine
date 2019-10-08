@@ -163,8 +163,13 @@ void loadTheme(struct NukeTheme* t, lb::LuaRef _t) {
 	t->isLoaded = true;
 }
 
+Config* Config::getSingleton() {
+	static Config instance;
+	instance.reload(&instance);
+	return &instance;
+}
 
-Config::Config() {
+void Config::reload(Config* instance) {
 	Lua* lua = Lua::getSingleton();
 	bfs::path configDir("config");
 	bfs::path config("./config/main.lua");
@@ -173,24 +178,31 @@ Config::Config() {
 	if (!bfs::exists(config))
 	{
 		cout << "Main config not found, create it please!" << endl;
-		return;
 	}
 	boost::filesystem::recursive_directory_iterator iter(configDir), eod;
 	for (auto& p : iter)
 	{
-		cout << "[config] " << p.path().generic_path().c_str() << endl;
+		cout << "[config] " << p.path().string().c_str() << endl;
 		lua->doFile(p.path().string().c_str());
 	}
 	auto w = lb::getGlobal(lua->l, "window");
 	if (!w.isNil()) {
-		window.h = w["height"].cast<int>();
-		window.w = w["width"].cast<int>();
-		window.mainFont = w["mainFont"].cast<std::string>();
+		instance->window = NukeWindow();
+		instance->window.h = w["height"].cast<int>();
+		instance->window.w = w["width"].cast<int>();
+		std::string fontName = w["mainFont"].cast<std::string>();
+		//strcpy(instance->window.mainFont, fontName.c_str());
+		instance->window.mainFont = (char*)fontName.c_str();
+		cout << "FONT IS " << instance->window.mainFont << endl;
 	}
 
 	auto t = lb::getGlobal(lua->l, "theme");
 	if (!t.isNil()) {
-		loadTheme(&theme, t);
+		loadTheme(&instance->theme, t);
 	}
+}
+
+Config::Config() {
+	//reload(this);
 }
 Config::~Config() {}

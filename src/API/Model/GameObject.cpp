@@ -6,28 +6,8 @@ GameObject::GameObject(std::string name)
 	this->gameobject = this;
 	this->transform = transform;
 }
+
 GameObject::~GameObject() {}
-
-
-template<class T>
-T* GameObject::GetComponent()
-{
-	for (auto cmp : components)
-		if (auto res = dynamic_cast<T*>(cmp))
-			return res;
-	return nullptr;
-}
-
-
-template<class T>
-bc::list<T*> GameObject::GetComponents()
-{
-	bc::list<T*> lst;
-	for (auto cmp : components)
-		if (auto res = dynamic_cast<T*>(cmp))
-			lst.push_back(res);
-	return lst;
-}
 
 void GameObject::AddComponent(NukeComponent* cmp) {
 	cmp->Init(this);
@@ -54,14 +34,6 @@ void GameObject::SetParent(GameObject* newparent) {
 void GameObject::AddChild(GameObject* newChild) {
 	children.push_back(newChild);
 	newChild->parent = this;
-}
-
-template <class T>
-void GameObject::Update() {
-	for (auto c : children) {
-		if (auto mr = c->GetComponent<T>())
-			mr->Update();
-	}
 }
 
 void GameObject::Reset() {}

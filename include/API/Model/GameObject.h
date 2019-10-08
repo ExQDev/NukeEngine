@@ -26,11 +26,23 @@ public:
 
 
 	template<class T>
-	T* GetComponent();
+	T* GetComponent(){
+		std::cout << "This gameobject: " << this << "; components: " << &components << std::endl;
+		for (auto cmp : components)
+			if (auto res = dynamic_cast<T*>(cmp))
+				return res;
+		return nullptr;
+	}
 	
 	
 	template<class T>
-	bc::list<T*> GetComponents();
+	bc::list<T*> GetComponents() {
+		bc::list<T*> lst;
+		for (auto cmp : components)
+			if (auto res = dynamic_cast<T*>(cmp))
+				lst.push_back(res);
+		return lst;
+	}
 
 	void AddComponent(NukeComponent* cmp);
 
@@ -43,7 +55,12 @@ public:
 	void AddChild(GameObject* newChild);
 
     template <class T>
-	void Update();
+	void Update() {
+		for (auto c : children) {
+			if (auto mr = c->GetComponent<T>())
+				mr->Update();
+		}
+	}
 
 	void Reset();
 	void Pause();

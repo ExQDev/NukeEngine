@@ -20,7 +20,7 @@ public:
 
 	void load(char* txt_style);
 	ImVec4 confColor2ImVec(struct confColor cc);
-	void setup();
-	void setupDefault();
+	void setup(ImGuiContext* context);
+	void setupDefault(ImGuiContext* context);
 };
 #endif // GUI_H
