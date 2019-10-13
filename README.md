@@ -34,10 +34,11 @@ Whih dependecies are higly recommended to install via vcpkg?:
 * lua
 * freeglut
 * glew
+
 Unfortunately, bgfx, bimg and bx are not avaliable via vcpkg, and you need to build them with your own. Just initialize submodules, then generate Visual Studio projects for them. Also, you can fix broken links to them on NukeEngine solution, if this happened.
 So, try to build it!
 
-> Note: It woulb be better to clone NukeEngine Editor nearby NukeEngine root directory.
+> Note: It would be better to clone NukeEngine Editor nearby NukeEngine root directory.
 
 > The best hierarchy scheme for solution:
 + [NE]
