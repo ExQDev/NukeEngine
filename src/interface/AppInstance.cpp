@@ -6,6 +6,7 @@ AppInstance::AppInstance()
 	keyboard = KeyBoard::getSingleton();
 	mouse = Mouse::getSingleton();
 	render = iRender::getSingleton();
+	config = Config::getSingleton();
 }
 AppInstance::~AppInstance() {}
 

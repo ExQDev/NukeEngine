@@ -21,7 +21,8 @@ public:
     bc::list<NukeComponent*> components;
     bc::list<GameObject*> children;
 
-	GameObject(std::string name);
+	GameObject();
+	GameObject(const char* name);
 	~GameObject();
 
 

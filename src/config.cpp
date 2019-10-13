@@ -1,87 +1,4 @@
 #include "config.h"
-//
-//struct NukeWindow {
-//	int w, h;
-//	std::string mainFont;
-//	bool hierarchy = true,
-//		console = true,
-//		browser = true,
-//		plugmgr = false,
-//		about = true,
-//		inspector = true,
-//		render = true;
-//} NukeWindow;
-//
-//struct confUiVec {
-//	int x, y;
-//} confUiVec;
-//
-//
-//struct confColor {
-//	float x, y, z, w;
-//} confColor;
-//
-//
-//struct NukeTheme {
-//	bool isLoaded = false;
-//
-//	struct confUiVec WindowPadding;
-//	struct confUiVec FramePadding;
-//	struct confUiVec ItemSpacing;
-//	struct confUiVec ItemInnerSpacing;
-//	float WindowRounding;
-//	float FrameRounding;
-//	float IndentSpacing;
-//	float ScrollbarSize;
-//	float ScrollbarRounding;
-//	float GrabMinSize;
-//	float GrabRounding;
-//
-//	struct confColor ImGuiCol_Text;
-//	struct confColor ImGuiCol_TextDisabled;
-//	struct confColor ImGuiCol_WindowBg;
-//	struct confColor ImGuiCol_ChildWindowBg;
-//	struct confColor ImGuiCol_PopupBg;
-//	struct confColor ImGuiCol_Border;
-//	struct confColor ImGuiCol_BorderShadow;
-//	struct confColor ImGuiCol_FrameBg;
-//	struct confColor ImGuiCol_FrameBgHovered;
-//	struct confColor ImGuiCol_FrameBgActive;
-//	struct confColor ImGuiCol_TitleBg;
-//	struct confColor ImGuiCol_TitleBgCollapsed;
-//	struct confColor ImGuiCol_TitleBgActive;
-//	struct confColor ImGuiCol_MenuBarBg;
-//	struct confColor ImGuiCol_ScrollbarBg;
-//	struct confColor ImGuiCol_ScrollbarGrab;
-//	struct confColor ImGuiCol_ScrollbarGrabHovered;
-//	struct confColor ImGuiCol_ScrollbarGrabActive;
-//	//struct confColor ImGuiCol_ComboBg;
-//	struct confColor ImGuiCol_CheckMark;
-//	struct confColor ImGuiCol_SliderGrab;
-//	struct confColor ImGuiCol_SliderGrabActive;
-//	struct confColor ImGuiCol_Button;
-//	struct confColor ImGuiCol_ButtonHovered;
-//	struct confColor ImGuiCol_ButtonActive;
-//	struct confColor ImGuiCol_Header;
-//	struct confColor ImGuiCol_HeaderHovered;
-//	struct confColor ImGuiCol_HeaderActive;
-//	struct confColor ImGuiCol_Column;
-//	struct confColor ImGuiCol_ColumnHovered;
-//	struct confColor ImGuiCol_ColumnActive;
-//	struct confColor ImGuiCol_ResizeGrip;
-//	struct confColor ImGuiCol_ResizeGripHovered;
-//	struct confColor ImGuiCol_ResizeGripActive;
-//	//struct confColor ImGuiCol_CloseButton;
-//	//struct confColor ImGuiCol_CloseButtonHovered;
-//	//struct confColor ImGuiCol_CloseButtonActive;
-//	struct confColor ImGuiCol_PlotLines;
-//	struct confColor ImGuiCol_PlotLinesHovered;
-//	struct confColor ImGuiCol_PlotHistogram;
-//	struct confColor ImGuiCol_PlotHistogramHovered;
-//	struct confColor ImGuiCol_TextSelectedBg;
-//	struct confColor ImGuiCol_ModalWindowDarkening;
-//} NukeTheme;
-
 
 struct confColor luaGetColor(lb::LuaRef ref, const char* name) {
 	auto col = ref[name];
@@ -170,6 +87,7 @@ Config* Config::getSingleton() {
 }
 
 void Config::reload(Config* instance) {
+	
 	Lua* lua = Lua::getSingleton();
 	bfs::path configDir("config");
 	bfs::path config("./config/main.lua");
@@ -177,12 +95,12 @@ void Config::reload(Config* instance) {
 		bfs::create_directory(configDir);
 	if (!bfs::exists(config))
 	{
-		cout << "Main config not found, create it please!" << endl;
+		cout << "[config]\t" << "Main config not found, create it please!" << endl;
 	}
 	boost::filesystem::recursive_directory_iterator iter(configDir), eod;
 	for (auto& p : iter)
 	{
-		cout << "[config] " << p.path().string().c_str() << endl;
+		cout << "[config]\t" << p.path().string().c_str() << endl;
 		lua->doFile(p.path().string().c_str());
 	}
 	auto w = lb::getGlobal(lua->l, "window");
@@ -193,7 +111,7 @@ void Config::reload(Config* instance) {
 		std::string fontName = w["mainFont"].cast<std::string>();
 		//strcpy(instance->window.mainFont, fontName.c_str());
 		instance->window.mainFont = (char*)fontName.c_str();
-		cout << "FONT IS " << instance->window.mainFont << endl;
+		//cout << "FONT IS " << instance->window.mainFont << endl;
 	}
 
 	auto t = lb::getGlobal(lua->l, "theme");
@@ -203,6 +121,8 @@ void Config::reload(Config* instance) {
 }
 
 Config::Config() {
+	cout << "[config]\tCWD: " << bfs::current_path() << endl;
+
 	//reload(this);
 }
 Config::~Config() {}

@@ -1,7 +1,14 @@
 #include "API/Model/GameObject.h"
+#include <iostream>
 
-GameObject::GameObject(std::string name)
+GameObject::GameObject()
 {
+	this->gameobject = this;
+}
+
+GameObject::GameObject(const char* name)
+{
+	std::cout << "[GameObject]\t" << "New GameObject(" << name << ")" << std::endl;
 	this->name = name;
 	this->gameobject = this;
 	this->transform = transform;

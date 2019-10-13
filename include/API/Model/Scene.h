@@ -7,9 +7,11 @@ class NUKEENGINE_API Scene
 {
 public:
 	std::string name = "Default scene";
-    bc::list<GameObject*> hierarchy;
+    bc::list<GameObject*> *hierarchy = nullptr;
 
-	GameObject* Get(std::string name);
+	Scene();
+
+	GameObject* Get(const char* name);
 
 	void Add(GameObject* go);
 

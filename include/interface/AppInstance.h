@@ -17,11 +17,11 @@ protected:
 	~AppInstance();
 public:
 	
-	Scene* currentScene;
-    KeyBoard* keyboard;
-    Mouse* mouse;
-	Config* config;
-    iRender* render;
+	Scene* currentScene = nullptr;
+    KeyBoard* keyboard = nullptr;
+    Mouse* mouse = nullptr;
+	Config* config = nullptr;
+    iRender* render = nullptr;
 
 	virtual bool isEditor();
 	static AppInstance* GetSingleton() 

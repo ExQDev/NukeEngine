@@ -19,19 +19,25 @@ protected:
 
 public:
 	bool isEditor();
-	MenuStrip* menuStrip;
-	GameObject* selectedInHieararchy;
+	MenuStrip* menuStrip = nullptr;
+	GameObject* selectedInHieararchy = nullptr;
     int manipulationMode = 0;
     int manipulationWorld = 0;
     //bc::list<btups::tuple<string, b::function<void()>>> editorWindows;
-    bc::map<string, b::function<void()>> *editorWindows;
+    bc::map<string, b::function<void()>> *editorWindows = nullptr;
 
-	void PushWindow(string key, boost::function<void()> fWindow);
+	void PushWindow(const char* key, boost::function<void()> fWindow);
+
+	//void PushWindow(string &key, boost::function<void()> fWindow);
 	void PopWindow(string key);
 
 	static EditorInstance* GetSingleton() 
 	{
 		static EditorInstance instance;
+		/*if (!instance.currentScene)
+			instance.currentScene = new Scene();
+		if (!instance.currentScene->hierarchy)
+			instance.currentScene->hierarchy = new bc::list<GameObject*>();*/
 		return &instance;
 	}
 };
