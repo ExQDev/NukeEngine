@@ -24,7 +24,7 @@ And this should be all done.
 
 It is highly recommended to use Visual Studio 2019 (or up) with [vcpkg](https://github.com/Microsoft/vcpkg).
 We suggest to install all dependecies that are submodules via `vcpkg`, to avoid a lot of confilcts and asspain.
-Thus, you should install boost libaraies via `vcpkg`. You can install now whole library, just subs, like `boost-thread` and others.
+Thus, you should install boost libaraies via `vcpkg`. You can install not whole library, just subs, like `boost-thread` and others.
 If some dependencies could not be resolved, `Visual Studio` will automatically suggest to install it via `vcpkg`.
 In other cases, generate dependency projects as told in their READMEs and chack links to them in solution.
 Whih dependecies are higly recommended to install via vcpkg?:
