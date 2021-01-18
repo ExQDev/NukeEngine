@@ -1,6 +1,7 @@
 #ifndef NUKEBGFX_H
 #define NUKEBGFX_H
 #include "../irender.h"
+#include <GL/glew.h>
 #include <input/keyboard.h>
 #include <input/mouse.h>
 #include <boost/thread.hpp>
@@ -43,18 +44,8 @@ private:
 public:
 	NukeBGFX();
 	~NukeBGFX();
-    b::function<void()> _UIinit;
-    b::function<void(unsigned char c, int x, int y)> _UIkeyboard;
-    b::function<void(unsigned char c, int x, int y)> _UIkeyaboardUp;
-    b::function<void(int key, int x, int y)> _UIspecial;
-    b::function<void(int key, int x, int y)> _UIspecialUp;
-    b::function<void(int button, int state, int x, int y)> _UImouse;
-    b::function<void(int button, int dir, int x, int y)> _UImouseWheel;
-    b::function<void(int x, int y)> _UImove;
-    b::function<void(int x, int y)> _UIpmove;
-    b::function<void(int w, int h)> _UIreshape;
 
-    static NukeBGFX* getSingleton()
+    static iRender* getSingleton()
     {
         if(!_main)
             _main = new NukeBGFX();

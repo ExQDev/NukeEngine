@@ -1,20 +1,42 @@
 #include "API/Model/GameObject.h"
 #include <iostream>
 
-GameObject::GameObject()
-{
-	this->gameobject = this;
-}
+using namespace std;
 
-GameObject::GameObject(const char* name)
+GameObject::GameObject() : transform(this)
+{}
+
+GameObject::GameObject(const char* name) : name(name), transform(this)
 {
-	std::cout << "[GameObject]\t" << "New GameObject(" << name << ")" << std::endl;
-	this->name = name;
-	this->gameobject = this;
-	this->transform = transform;
+	cout << "[GameObject]\t\t" << "New GameObject(\"" << name << "\")" << endl;
 }
 
 GameObject::~GameObject() {}
+
+std::string GameObject::GetName()
+{
+	return this->name;
+}
+
+std::string GameObject::GetTag()
+{
+	return this->tag;
+}
+
+void GameObject::SetName(const char* name)
+{
+	this->name = name;
+}
+
+void GameObject::SetTag(const char* tag)
+{
+	this->tag = tag;
+}
+
+Transform& GameObject::GetTransform()
+{
+	return transform;
+}
 
 void GameObject::AddComponent(NukeComponent* cmp) {
 	cmp->Init(this);
@@ -28,14 +50,27 @@ void GameObject::FixedUpdate() {}
 void GameObject::Update()
 {
 	for (auto child : children)
-		child->Update();
+	{
+		cout << "[GameObject]\t\t" << "Child update: " << child << ", " << child->name << endl;
+		if (child)
+			child->Update();
+	}
 	for (auto cmp : components)
-		cmp->Update();
+	{
+		cout << "[GameObject]\t\t" << "Component update: " << cmp << endl;
+		if(cmp)
+			cmp->Update();
+	}
 }
 
 void GameObject::SetParent(GameObject* newparent) {
 	newparent->children.push_back(this);
 	parent = newparent;
+}
+
+GameObject* GameObject::GetParent()
+{
+	return this->parent;
 }
 
 void GameObject::AddChild(GameObject* newChild) {
@@ -51,6 +86,6 @@ void GameObject::Destroy()
 	{
 		x->Destroy();
 	}
-	parent->gameobject->children.remove(this);
-	delete this;
+	parent->children.remove(this);
+	free(this);
 }

@@ -11,11 +11,11 @@ Lua::Lua() {
 		bfs::create_directory(plugins);
 	if (!bfs::exists(main))
 	{
-		cout << "Main lua plugin is not detected. Skipping lua initialization." << endl;
+		cout << "[lua]\t\t\t" << "Main lua plugin is not detected. Skipping lua initialization." << endl;
 	}
 	else
 	{
-		cout << "Main lua plugin detected. Loading..." << endl;
+		cout << "[lua]\t\t\t" << "Main lua plugin detected. Loading..." << endl;
 		doFile(main.string().c_str());
 	}
 }

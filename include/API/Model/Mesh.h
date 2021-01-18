@@ -4,10 +4,12 @@
 #include "Transform.h"
 #include "Material.h"
 #include <assimp/mesh.h>
-#include <boost/container/list.hpp>
+//#include <boost/container/list.hpp>
 #include <memory>
 
-namespace bc = boost::container;
+//namespace bc = boost::container;
+//class Mesh;
+//template class NUKEENGINE_API bc::list<Mesh*>;
 
 class NUKEENGINE_API Mesh
 {
@@ -18,7 +20,8 @@ public:
     float *uvArray;
 
     int numVerts;
-    bc::list<Mesh*> children;
+
+	List<Mesh*>  children;
 
 
 	Mesh();

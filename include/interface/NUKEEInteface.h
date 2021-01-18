@@ -5,8 +5,6 @@
 using namespace boost;
 
 #include "AppInstance.h"
-#include "EditorInstance.h"
-
 
 
 class BOOST_SYMBOL_EXPORT NUKEModule {

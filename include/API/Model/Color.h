@@ -4,10 +4,10 @@
 class NUKEENGINE_API Color
 {
 public:
-	float r, g, b, a;
+	double r, g, b, a;
 
 	Color();
-	Color(float r, float g, float b, float a);
+	Color(double r, double g, double b, double a);
 
 
 	Color operator+(Color other);

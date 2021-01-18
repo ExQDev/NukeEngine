@@ -8,30 +8,48 @@ namespace bc = boost::container;
 #include "Layers.h"
 #include "ID.h"
 
-class NUKEENGINE_API GameObject : public NukeComponent
+template class NUKEENGINE_API bc::list<NukeComponent*>;
+template class NUKEENGINE_API bc::list<GameObject*>;
+
+#pragma pack(push, 1)
+class NUKEENGINE_API GameObject
 {
+protected:
+	
+
 public:
-	Transform transform = { this };
-    GameObject* parent = nullptr;
-	ID id;
+	
 	std::string name = "GameObject";
 	std::string tag = "Untagged";
+	GameObject* parent = nullptr;
+	Transform transform = Transform(this);
+	
+	ID id;
+	
 	int layer = Layer::L_DEFAULT;
 
-    bc::list<NukeComponent*> components;
-    bc::list<GameObject*> children;
+    bc::list<NukeComponent*> components = bc::list<NukeComponent*>();
+    bc::list<GameObject*> children = bc::list<GameObject*>();
 
 	GameObject();
 	GameObject(const char* name);
 	~GameObject();
 
 
+	std::string GetName();
+	std::string GetTag();
+	void SetName(const char* name);
+	void SetTag(const char* tag);
+	Transform& GetTransform();
+	
 	template<class T>
 	T* GetComponent(){
-		std::cout << "This gameobject: " << this << "; components: " << &components << std::endl;
-		for (auto cmp : components)
+		for (NukeComponent* cmp : this->components)
+		{
+			std::cout << "[GameObject]\t\t" << cmp << std::endl;
 			if (auto res = dynamic_cast<T*>(cmp))
 				return res;
+		}
 		return nullptr;
 	}
 	
@@ -52,6 +70,7 @@ public:
 	void Update();
 
 	void SetParent(GameObject* newparent);
+	GameObject* GetParent();
 
 	void AddChild(GameObject* newChild);
 
@@ -70,4 +89,5 @@ public:
 private:
 
 };
+#pragma pack(pop)
 #endif // !NUKEE_GAMEOBJECT_H

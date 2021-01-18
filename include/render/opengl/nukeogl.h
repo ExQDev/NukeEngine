@@ -38,7 +38,7 @@ void ogltimer(int t);
 class NUKEENGINE_API NukeOGL : public iRender
 {
 private:
-    bc::list<b::function<void()>> _onClose;
+	List<b::function<void()>> _onClose;
     b::function<void()> _physTrigger;
     bc::list<b::function<void(void)>> _onRender;
     bc::list<b::function<void(void)>> _onGUI;

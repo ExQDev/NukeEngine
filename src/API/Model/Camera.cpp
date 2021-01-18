@@ -22,7 +22,7 @@ Camera::Camera(iRender* renderer) : NukeComponent("Camera")
 	if (((NukeBGFX*)renderer) != NukeBGFX::getSingleton())
 		renderer->init(r_width, r_height);
 	else
-		cout << "[!] Camera of main renderer" << endl;
+		cout << "[Camera]\t\t" << "[!] Camera of main renderer" << endl;
 }
 
 Camera::Camera(GameObject* parent, iRender* renderer) : NukeComponent("Camera")
@@ -225,14 +225,14 @@ void Camera::ProcessKeyboard() {
 
 void Camera::Init(GameObject* parent)
 {
-	transform = &parent->transform;
+	transform = &parent->GetTransform();
 	if (this->renderer)
 		this->renderer->transform = transform;
 	parent->components.push_back(this);
-	if (((NukeOGL*)renderer) != NukeOGL::getSingleton())
+	if (((NukeBGFX*)renderer) != NukeBGFX::getSingleton())
 		renderer->init(r_width, r_height);
 	else
-		cout << "[!] Camera of main renderer" << endl;
+		cout << "[Camera]\t\t" << "[!] Camera of main renderer" << endl;
 	//*KeyBoard::getSingleton() += b::function<void(unsigned char, int, int)>(b::bind(&Camera::ProcessKeyboard, b::ref(*this), _1, _2, _3));
 //        *Mouse::getSingleton() += b::function<void(int, int, int, int)>(b::bind(&Camera::ProcessMouse, b::ref(*this), _1, _2, _3, _4));
 //        *Mouse::getSingleton() &= b::function<void(int, int)>(b::bind(&Camera::ProcessMouseMove, b::ref(*this), _1, _2));

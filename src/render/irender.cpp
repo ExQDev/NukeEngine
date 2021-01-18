@@ -1,3 +1,3 @@
 #include "render/irender.h"
 
-iRender* iRender::_instance;
+iRender* iRender::_instance = nullptr;

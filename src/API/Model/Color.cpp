@@ -1,10 +1,10 @@
 #include "API/Model/Color.h"
 #include "API/Model/Vector.h"
 
-float r, g, b, a;
+double r, g, b, a;
 
 Color::Color() {}
-Color::Color(float r, float g, float b, float a)
+Color::Color(double r, double g, double b, double a)
 {
 	this->r = r;
 	this->g = g;

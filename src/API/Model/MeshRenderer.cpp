@@ -4,7 +4,7 @@
 MeshRenderer::MeshRenderer() : NukeComponent("MeshRenderer") {}
 
 void MeshRenderer::Init(GameObject* parent) {
-	transform = &parent->transform;
+	transform = &parent->GetTransform();
 	parent->components.push_back(this);
 }
 

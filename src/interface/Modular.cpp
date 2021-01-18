@@ -1,6 +1,6 @@
 #include "interface/Modular.h"
 
-void InitModules(EditorInstance* instance)
+void InitModules(AppInstance* instance)
 {
 	if (!bfs::exists(bfs::path(bfs::current_path().concat("/modules"))))
 	{

@@ -24,12 +24,13 @@ NukeBGFX::NukeBGFX() {
 }
 NukeBGFX::~NukeBGFX() {}
 
-int NukeBGFX::init(int w, int h) {
+int NukeBGFX::init(int w = 1280, int h = 720) {
+	cout << "[NukeBGFX]\t\t" << "Called init of render(" << w << ", " << h << ")" << endl;
 	glfwSetErrorCallback(glfw_errorCallback);
 	if (!glfwInit())
 		return 1;
 	glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-	window = glfwCreateWindow(1024, 768, "NukeEngine Editor", nullptr, nullptr);
+	window = glfwCreateWindow(w, h, "NukeEngine Editor", nullptr, nullptr);
 	if (!window)
 		return 1;
 	glfwSetKeyCallback(window, glfw_keyCallback);

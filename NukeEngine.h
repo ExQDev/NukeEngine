@@ -6,11 +6,30 @@
 // defined with this macro as being exported.
 #ifndef NUKEENGINE_H
 #define NUKEENGINE_H
+#include <cmath>
+#include <algorithm>
+#include <boost/function.hpp>
+#include <boost/container/list.hpp>
+#include <string.h>
+
+namespace b = boost;
+namespace bc = boost::container;
+
 #ifdef NUKEENGINE_EXPORTS
 #ifdef NUKEENGINE_API
 #undef NUKEENGINE_API
 #endif
 #define NUKEENGINE_API __declspec(dllexport)
+#include <boost/config.hpp>
+
+template<typename T> class
+NUKEENGINE_API Func : b::function<T> {};
+template<typename T> class
+NUKEENGINE_API List : bc::list<T> {};
+//template class NUKEENGINE_API b::function<void(int, int)>;
+//template class NUKEENGINE_API b::function<void(int, int, int, int)>;
+//template class NUKEENGINE_API b::function<void(int, int, int)>;
+//template class NUKEENGINE_API b::function<void(unsigned char, int, int)>;
 #else
 #define NUKEENGINE_API __declspec(dllimport)
 #endif

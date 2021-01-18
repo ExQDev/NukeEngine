@@ -18,7 +18,7 @@ public:
     iRender *renderer = nullptr;
 	Texture renderTex;
 	int r_width = 640, r_height = 480;
-    float fov = 90, _near = 0.3, _far = 10000;
+    float fov = 90, _near = 0.3f, _far = 10000;
 	unsigned long int renderLayers;
     bool freeMode;
 

@@ -11,7 +11,7 @@ namespace bc = boost::container;
 namespace b = boost;
 namespace btups = boost::tuples;
 
-class NUKEENGINE_API EditorInstance : public AppInstance
+class NUKEENGINE_API EditorInstance
 {
 protected:
 	EditorInstance();
@@ -19,17 +19,7 @@ protected:
 
 public:
 	bool isEditor();
-	MenuStrip* menuStrip = nullptr;
-	GameObject* selectedInHieararchy = nullptr;
-    int manipulationMode = 0;
-    int manipulationWorld = 0;
-    //bc::list<btups::tuple<string, b::function<void()>>> editorWindows;
-    bc::map<string, b::function<void()>> *editorWindows = nullptr;
-
-	void PushWindow(const char* key, boost::function<void()> fWindow);
-
-	//void PushWindow(string &key, boost::function<void()> fWindow);
-	void PopWindow(string key);
+	
 
 	static EditorInstance* GetSingleton() 
 	{

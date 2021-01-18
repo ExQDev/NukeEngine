@@ -12,6 +12,9 @@
 #define _USE_MATH_DEFINES // for C
 #include <math.h>
 
+#include <iostream>
+using namespace std;
+
 Transform::Transform(GameObject* parent)
 {
 	Init(parent);
@@ -79,18 +82,19 @@ void Transform::Reset()
 
 
 Vector3 Transform::globalPosition() {
-	//    cout << "GO: " << this->go << endl;
-	//    cout << "GO PARENT: " << this->go->parent << endl;
-	//    cout << "GO PARENT POS: " << this->go->parent->transform.position.toStringA() << endl;
-	return Vector3((this->go != nullptr && this->go->parent != nullptr)
-		? (this->position + this->go->parent->transform.globalPosition())
+	cout << "THIS: " << this << endl;
+	cout << "GO: " << this->go << endl;
+	cout << "GO PARENT: " << this->go->GetParent() << endl;
+	//cout << "GO PARENT POS: " << this->go->GetParent()->GetTransform().position.toStringA() << endl;
+	return Vector3((this->go != nullptr && this->go->GetParent() != nullptr)
+		? (this->position + this->go->GetParent()->GetTransform().globalPosition())
 		: (this->position));
 }
 
 Vector3 Transform::globalRotation() {
-	return Vector3((this->go->parent) ? (this->rotation + this->go->parent->transform.globalRotation()) : (this->rotation));
+	return Vector3((this->go->GetParent()) ? (this->rotation + this->go->GetParent()->GetTransform().globalRotation()) : (this->rotation));
 }
 
 Vector3 Transform::globalScale() {
-	return Vector3((this->go->parent) ? (this->scale * this->go->parent->transform.globalScale()) : (this->scale));
+	return Vector3((this->go->GetParent()) ? (this->scale * this->go->GetParent()->GetTransform().globalScale()) : (this->scale));
 }

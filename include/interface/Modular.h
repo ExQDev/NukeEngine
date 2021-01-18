@@ -3,8 +3,6 @@
 #define NUKE_MODULAR_H
 #include <interface/NUKEEInteface.h>
 
-#include <interface/EditorInstance.h>
-
 #define BOOST_FILESYSTEM_VERSION 3
 #define BOOST_FILESYSTEM_NO_DEPRECATED
 #include <boost/filesystem.hpp>
@@ -22,10 +20,8 @@ namespace bc = boost::container;
 #endif // USE_WINAPI
 
 bc::vector<boost::shared_ptr<NUKEModule>> modules;
-//NUKEENGINEAPI void InitModules(EditorInstance* instance);
-//NUKEENGINEAPI void UnloadModules();
 
-NUKEENGINE_API void InitModules(EditorInstance* instance);
+NUKEENGINE_API void InitModules(AppInstance* instance);
 NUKEENGINE_API void UnloadModules();
 #endif // !NUKE_MODULAR_H
 

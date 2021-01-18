@@ -95,15 +95,17 @@ void Config::reload(Config* instance) {
 		bfs::create_directory(configDir);
 	if (!bfs::exists(config))
 	{
-		cout << "[config]\t" << "Main config not found, create it please!" << endl;
+		cout << "[config]\t\t" << "Main config not found, create it please!" << endl;
 	}
 	boost::filesystem::recursive_directory_iterator iter(configDir), eod;
 	for (auto& p : iter)
 	{
-		cout << "[config]\t" << p.path().string().c_str() << endl;
+		cout << "[config]\t\t" << p.path().string().c_str() << endl;
 		lua->doFile(p.path().string().c_str());
 	}
+	/*lua_dump(lua->l, lua)*/
 	auto w = lb::getGlobal(lua->l, "window");
+	//cout << "[config]\t\t" << "Window ref: " << w << endl;
 	if (!w.isNil()) {
 		instance->window = NukeWindow();
 		instance->window.h = w["height"].cast<int>();
@@ -111,6 +113,7 @@ void Config::reload(Config* instance) {
 		std::string fontName = w["mainFont"].cast<std::string>();
 		//strcpy(instance->window.mainFont, fontName.c_str());
 		instance->window.mainFont = (char*)fontName.c_str();
+		cout << "[config]\t\t" << "Window size = [" << instance->window.w << "x" << instance->window.h << "]" << endl;
 		//cout << "FONT IS " << instance->window.mainFont << endl;
 	}
 
@@ -121,7 +124,7 @@ void Config::reload(Config* instance) {
 }
 
 Config::Config() {
-	cout << "[config]\tCWD: " << bfs::current_path() << endl;
+	cout << "[config]\t\t" << "CWD: " << bfs::current_path() << endl;
 
 	//reload(this);
 }

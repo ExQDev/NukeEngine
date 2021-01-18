@@ -16,10 +16,20 @@ public:
     static iRender* getSingleton(){
         return _instance;
     }
-    Transform* transform;
-    int width, height;
-    bool _crosshair;
+    Transform* transform = nullptr;
+    int width = 0, height = 0;
+    bool _crosshair = false;
     float fov = 90, Far = 1000, Near = 0.3f;
+	b::function<void()> _UIinit;
+	b::function<void(unsigned char c, int x, int y)> _UIkeyboard;
+	b::function<void(unsigned char c, int x, int y)> _UIkeyaboardUp;
+	b::function<void(int key, int x, int y)> _UIspecial;
+	b::function<void(int key, int x, int y)> _UIspecialUp;
+	b::function<void(int button, int state, int x, int y)> _UImouse;
+	b::function<void(int button, int dir, int x, int y)> _UImouseWheel;
+	b::function<void(int x, int y)> _UImove;
+	b::function<void(int x, int y)> _UIpmove;
+	b::function<void(int w, int h)> _UIreshape;
     virtual int render() = 0;
     virtual void renderObject(Mesh* mesh, Material* mat, Transform* transform) = 0;
     virtual int init(int w, int h) = 0;
