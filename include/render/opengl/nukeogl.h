@@ -35,11 +35,11 @@ void oglmove(int x, int y);
 void oglpmove(int x, int y);
 void ogltimer(int t);
 
-class NUKEENGINE_API NukeOGL : public iRender
+class NukeOGL : public iRender
 {
 private:
-	List<b::function<void()>> _onClose;
-    b::function<void()> _physTrigger;
+	bc::list<b::function<void()>> _onClose;
+    bst::function<void()> _physTrigger;
     bc::list<b::function<void(void)>> _onRender;
     bc::list<b::function<void(void)>> _onGUI;
 
@@ -52,16 +52,16 @@ private:
 public:
 	NukeOGL();
 	~NukeOGL();
-    b::function<void()> _UIinit;
-    b::function<void(unsigned char c, int x, int y)> _UIkeyboard;
-    b::function<void(unsigned char c, int x, int y)> _UIkeyaboardUp;
-    b::function<void(int key, int x, int y)> _UIspecial;
-    b::function<void(int key, int x, int y)> _UIspecialUp;
-    b::function<void(int button, int state, int x, int y)> _UImouse;
-    b::function<void(int button, int dir, int x, int y)> _UImouseWheel;
-    b::function<void(int x, int y)> _UImove;
-    b::function<void(int x, int y)> _UIpmove;
-    b::function<void(int w, int h)> _UIreshape;
+    bst::function<void()> _UIinit;
+    bst::function<void(unsigned char c, int x, int y)> _UIkeyboard;
+    bst::function<void(unsigned char c, int x, int y)> _UIkeyaboardUp;
+    bst::function<void(int key, int x, int y)> _UIspecial;
+    bst::function<void(int key, int x, int y)> _UIspecialUp;
+    bst::function<void(int button, int state, int x, int y)> _UImouse;
+    bst::function<void(int button, int dir, int x, int y)> _UImouseWheel;
+    bst::function<void(int x, int y)> _UImove;
+    bst::function<void(int x, int y)> _UIpmove;
+    bst::function<void(int w, int h)> _UIreshape;
 
     static NukeOGL* getSingleton()
     {
@@ -98,6 +98,12 @@ public:
 	void deinit();
 	char* getEngine();
 	char* getVersion();
+	void keyboard(int key, int scancode, int action, int mods);
+	void mouseMove(double xpos, double ypos);
+	void mouseClick(int button, int action, int mods);
+	void setCursorMode(int mode);
+	void rawMouse(double xpos, double ypos);
+	void mouseEnterLeave(int entered);
 };
 
 

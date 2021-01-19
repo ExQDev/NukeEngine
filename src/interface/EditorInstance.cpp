@@ -15,5 +15,5 @@ bool EditorInstance::isEditor() { return true; }
 //			throw std::runtime_error("Window key must be unique!");
 //	}
 //	cout << "Pushing window \"" << key << "\"" << endl;
-//	//editorWindows->insert(bc::pair<string, b::function<void()>>(key, fWindow));// make_pair(key, fWindow));
+//	//editorWindows->insert(bc::pair<string, bst::function<void()>>(key, fWindow));// make_pair(key, fWindow));
 //}

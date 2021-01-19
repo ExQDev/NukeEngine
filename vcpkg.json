@@ -1,0 +1,13 @@
+{
+  "name": "nukeengine",
+  "version-string": "0.0.1",
+	"dependencies": [
+		"assimp",
+		"glfw3",
+		"glm",
+		"lua",
+		"freeglut",
+		"glew",
+		"boost"
+	]
+}

@@ -40,15 +40,15 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -88,23 +88,18 @@
     <LinkIncremental>false</LinkIncremental>
     <IntDir>$(Platform)\$(Configuration)\Intermediate\</IntDir>
   </PropertyGroup>
-  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <VcpkgEnableManifest>true</VcpkgEnableManifest>
-  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;NUKEENGINE_EXPORTS;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;NOMINMAX;NUKEENGINE_API=__declspec(dllexport);%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <WarningLevel>Level1</WarningLevel>
+      <Optimization>MinSpace</Optimization>
+      <PreprocessorDefinitions>_DEBUG;NUKEENGINE_EXPORTS;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;NOMINMAX;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>./deps/imgui/;./include;./deps/LuaBridge/Source/;./deps;./deps/bx/include;./deps/bgfx/include;./deps/bx/include/compat/msvc</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>NukeEngine.h;pch.h;algorithm</ForcedIncludeFiles>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <LanguageStandard_C>stdc11</LanguageStandard_C>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -162,7 +157,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>./deps/imgui/;./include;./deps/LuaBridge/Source/;./deps;./deps/bx/include;./deps/bgfx/include;./deps/bx/include/compat/msvc</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>NukeEngine.h;pch.h;algorithm</ForcedIncludeFiles>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -173,9 +168,6 @@
       <IgnoreSpecificDefaultLibraries>LIBCMTD</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <None Include="cpp.hint" />
-  </ItemGroup>
   <ItemGroup>
     <ClInclude Include="deps\ImGuizmo\ImCurveEdit.h" />
     <ClInclude Include="deps\ImGuizmo\ImGradient.h" />
@@ -190,7 +182,7 @@
     <ClInclude Include="deps\lodepng\lodepng.h" />
     <ClInclude Include="deps\lodepng\lodepng_util.h" />
     <ClInclude Include="framework.h" />
-    <ClInclude Include="include\API\GUI.h" />
+    <ClInclude Include="include\API\iGUI.h" />
     <ClInclude Include="include\API\Model\Camera.h" />
     <ClInclude Include="include\API\Model\Clock.h" />
     <ClInclude Include="include\API\Model\Collider.h" />
@@ -225,6 +217,7 @@
     <ClInclude Include="include\input\keyboard.h" />
     <ClInclude Include="include\input\mouse.h" />
     <ClInclude Include="include\interface\AppInstance.h" />
+    <ClInclude Include="include\interface\EditorInstance.h" />
     <ClInclude Include="include\interface\EditorMenu\MenuItem.h" />
     <ClInclude Include="include\interface\EditorMenu\MenuStrip.h" />
     <ClInclude Include="include\interface\Modular.h" />
@@ -253,7 +246,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\API\GUI.cpp" />
+    <ClCompile Include="src\API\iGUI.cpp" />
     <ClCompile Include="src\API\Model\Camera.cpp" />
     <ClCompile Include="src\API\Model\Clock.cpp" />
     <ClCompile Include="src\API\Model\Collider.cpp" />
@@ -287,6 +280,7 @@
     <ClCompile Include="src\input\keyboard.cpp" />
     <ClCompile Include="src\input\mouse.cpp" />
     <ClCompile Include="src\interface\AppInstance.cpp" />
+    <ClCompile Include="src\interface\EditorInstance.cpp" />
     <ClCompile Include="src\interface\EditorMenu\MenuItem.cpp" />
     <ClCompile Include="src\interface\EditorMenu\MenuStrip.cpp" />
     <ClCompile Include="src\interface\Modular.cpp" />

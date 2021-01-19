@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29230.47
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bgfx", "deps\bgfx\.build\projects\vs2019\bgfx.vcxproj", "{6C90947C-58C7-950D-01B4-7B10EDC9110F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C499947C-B0D0-950D-59BD-7B1045D3110F} = {C499947C-B0D0-950D-59BD-7B1045D3110F}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bx", "deps\bgfx\.build\projects\vs2019\bx.vcxproj", "{5F775900-4B03-880B-B4B1-880BA05C880B}"
 EndProject
@@ -12,6 +15,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NukeEngine-Editor", "..\NukeEngine-Editor\NukeEngine-Editor.vcxproj", "{A03598B1-A421-492C-BC64-8B498518EE65}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NukeEngine", "NukeEngine.vcxproj", "{D26D9F7C-5A3A-4355-BD29-61E0E8F22FAF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5F775900-4B03-880B-B4B1-880BA05C880B} = {5F775900-4B03-880B-B4B1-880BA05C880B}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

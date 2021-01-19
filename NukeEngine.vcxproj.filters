@@ -1,0 +1,427 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="src\API\Model\Camera.cpp">
+      <Filter>src\API\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\Model\Clock.cpp">
+      <Filter>src\API\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\Model\Collider.cpp">
+      <Filter>src\API\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\Model\Color.cpp">
+      <Filter>src\API\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\Model\Component.cpp">
+      <Filter>src\API\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\Model\Game.cpp">
+      <Filter>src\API\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\Model\GameObject.cpp">
+      <Filter>src\API\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\Model\Material.cpp">
+      <Filter>src\API\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\Model\Light.cpp">
+      <Filter>src\API\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\Model\Layers.cpp">
+      <Filter>src\API\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\Model\Math.cpp">
+      <Filter>src\API\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\Model\Mesh.cpp">
+      <Filter>src\API\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\Model\MeshRenderer.cpp">
+      <Filter>src\API\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\Model\ray.cpp">
+      <Filter>src\API\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\Model\Resource.cpp">
+      <Filter>src\API\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\Model\resdb.cpp">
+      <Filter>src\API\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\Model\Package.cpp">
+      <Filter>src\API\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\Model\Module.cpp">
+      <Filter>src\API\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\Model\Scene.cpp">
+      <Filter>src\API\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\Model\Script.cpp">
+      <Filter>src\API\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\Model\Shader.cpp">
+      <Filter>src\API\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\Model\Texture.cpp">
+      <Filter>src\API\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\Model\Time.cpp">
+      <Filter>src\API\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\Model\Transform.cpp">
+      <Filter>src\API\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\Model\Vector.cpp">
+      <Filter>src\API\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\Model\ID.cpp">
+      <Filter>src\API\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\interface\AppInstance.cpp">
+      <Filter>src\interface</Filter>
+    </ClCompile>
+    <ClCompile Include="src\import\assimporter.cpp">
+      <Filter>src\import</Filter>
+    </ClCompile>
+    <ClCompile Include="src\API\iGUI.cpp">
+      <Filter>src\API</Filter>
+    </ClCompile>
+    <ClCompile Include="src\config.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gui\gui.cpp">
+      <Filter>src\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="deps\imgui\imgui.cpp">
+      <Filter>deps\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="deps\imgui\imgui_demo.cpp">
+      <Filter>deps\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="deps\imgui\imgui_draw.cpp">
+      <Filter>deps\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="deps\ImGuizmo\ImCurveEdit.cpp">
+      <Filter>deps\ImGuizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="deps\ImGuizmo\ImGradient.cpp">
+      <Filter>deps\ImGuizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="deps\ImGuizmo\ImGuizmo.cpp">
+      <Filter>deps\ImGuizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="deps\ImGuizmo\ImSequencer.cpp">
+      <Filter>deps\ImGuizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="deps\lodepng\lodepng.cpp">
+      <Filter>deps\lodepng</Filter>
+    </ClCompile>
+    <ClCompile Include="deps\lodepng\lodepng_util.cpp">
+      <Filter>deps\lodepng</Filter>
+    </ClCompile>
+    <ClCompile Include="src\interface\EditorMenu\MenuItem.cpp">
+      <Filter>src\interface\EditorMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\interface\EditorMenu\MenuStrip.cpp">
+      <Filter>src\interface\EditorMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\backend\lua.cpp">
+      <Filter>src\backend</Filter>
+    </ClCompile>
+    <ClCompile Include="src\input\keyboard.cpp">
+      <Filter>src\input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\input\mouse.cpp">
+      <Filter>src\input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\interface\Modular.cpp">
+      <Filter>src\interface</Filter>
+    </ClCompile>
+    <ClCompile Include="src\interface\NUKEEInteface.cpp">
+      <Filter>src\interface</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render\irender.cpp">
+      <Filter>src\render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render\opengl\nukeogl.cpp">
+      <Filter>src\render\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render\universal\nukebgfx.cpp">
+      <Filter>src\render\universal</Filter>
+    </ClCompile>
+    <ClCompile Include="NukeEngine.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\interface\EditorInstance.cpp">
+      <Filter>src\interface</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\config.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\import\assimporter.h">
+      <Filter>include\import</Filter>
+    </ClInclude>
+    <ClInclude Include="include\interface\AppInstance.h">
+      <Filter>include\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API\Model\Camera.h">
+      <Filter>include\API\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API\Model\Clock.h">
+      <Filter>include\API\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API\Model\Collider.h">
+      <Filter>include\API\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API\Model\Color.h">
+      <Filter>include\API\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API\Model\Component.h">
+      <Filter>include\API\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API\Model\Game.h">
+      <Filter>include\API\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API\Model\GameObject.h">
+      <Filter>include\API\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API\Model\ID.h">
+      <Filter>include\API\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API\Model\Layers.h">
+      <Filter>include\API\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API\Model\Light.h">
+      <Filter>include\API\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API\Model\Material.h">
+      <Filter>include\API\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API\Model\Math.h">
+      <Filter>include\API\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API\Model\Mesh.h">
+      <Filter>include\API\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API\Model\MeshRenderer.h">
+      <Filter>include\API\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API\Model\Module.h">
+      <Filter>include\API\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API\Model\Package.h">
+      <Filter>include\API\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API\Model\ray.h">
+      <Filter>include\API\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API\Model\resdb.h">
+      <Filter>include\API\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API\Model\Resource.h">
+      <Filter>include\API\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API\Model\Scene.h">
+      <Filter>include\API\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API\Model\Script.h">
+      <Filter>include\API\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API\Model\Shader.h">
+      <Filter>include\API\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API\Model\Texture.h">
+      <Filter>include\API\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API\Model\Time.h">
+      <Filter>include\API\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API\Model\Transform.h">
+      <Filter>include\API\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API\Model\Vector.h">
+      <Filter>include\API\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API\iGUI.h">
+      <Filter>include\API</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gui\gui.h">
+      <Filter>include\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="deps\imgui\imconfig.h">
+      <Filter>deps\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="deps\imgui\imgui.h">
+      <Filter>deps\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="deps\imgui\imgui_internal.h">
+      <Filter>deps\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="deps\imgui\stb_rect_pack.h">
+      <Filter>deps\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="deps\imgui\stb_textedit.h">
+      <Filter>deps\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="deps\imgui\stb_truetype.h">
+      <Filter>deps\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="deps\ImGuizmo\ImCurveEdit.h">
+      <Filter>deps\ImGuizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="deps\ImGuizmo\ImGradient.h">
+      <Filter>deps\ImGuizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="deps\ImGuizmo\ImGuizmo.h">
+      <Filter>deps\ImGuizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="deps\ImGuizmo\ImSequencer.h">
+      <Filter>deps\ImGuizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="deps\lodepng\lodepng.h">
+      <Filter>deps\lodepng</Filter>
+    </ClInclude>
+    <ClInclude Include="deps\lodepng\lodepng_util.h">
+      <Filter>deps\lodepng</Filter>
+    </ClInclude>
+    <ClInclude Include="include\backend\lua.h">
+      <Filter>include\backend</Filter>
+    </ClInclude>
+    <ClInclude Include="include\input\keyboard.h">
+      <Filter>include\input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API\Model\Include.h">
+      <Filter>include\API\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\interface\EditorMenu\MenuItem.h">
+      <Filter>include\interface\EditorMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\interface\EditorMenu\MenuStrip.h">
+      <Filter>include\interface\EditorMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\interface\Modular.h">
+      <Filter>include\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="include\interface\NUKEEInteface.h">
+      <Filter>include\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="include\input\mouse.h">
+      <Filter>include\input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\render\irender.h">
+      <Filter>include\render</Filter>
+    </ClInclude>
+    <ClInclude Include="include\render\universal\nukebgfx.h">
+      <Filter>include\render\universal</Filter>
+    </ClInclude>
+    <ClInclude Include="include\render\opengl\nukeogl.h">
+      <Filter>include\render\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="NukeEngine.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\interface\EditorInstance.h">
+      <Filter>include\interface</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{f383313e-3f04-4760-9d4a-46576c5a6373}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\API">
+      <UniqueIdentifier>{c3589ed4-0f62-4b38-abca-988be4b05c9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\API\Model">
+      <UniqueIdentifier>{004d2576-d380-4a43-aeb6-7fa9bbf5f136}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{132d7e54-e948-4a1e-8b0e-d0b739661b09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\API">
+      <UniqueIdentifier>{b1879476-0bae-44ad-a8bb-eed3f32eb56d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\API\Model">
+      <UniqueIdentifier>{9d7d6e72-f1a4-4cb4-b1ac-d7d1c5ed6c1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\backend">
+      <UniqueIdentifier>{29b405d2-7be7-4966-b992-93a79e0dc7d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\gui">
+      <UniqueIdentifier>{fb002960-b0a4-4ddb-9d1e-de688e9e336c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\import">
+      <UniqueIdentifier>{09dbd7a6-f1d4-47b7-ba76-deb448581026}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\input">
+      <UniqueIdentifier>{f9eaf2a0-fa08-4323-8020-ff0dc9096263}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\interface">
+      <UniqueIdentifier>{4060ff32-e001-4386-b28d-cf6fbddaedf7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\interface\EditorMenu">
+      <UniqueIdentifier>{5c0115f5-64ae-4268-aae8-c6b5cd2ef049}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\render">
+      <UniqueIdentifier>{47b6e392-67bb-4b93-b56e-800a6affa261}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\render\opengl">
+      <UniqueIdentifier>{5b262f6f-eade-4545-b3f2-5b04d3fcdd7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\render\universal">
+      <UniqueIdentifier>{bc77a218-0090-4e5d-8660-442bc9487901}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\backend">
+      <UniqueIdentifier>{52289455-b65a-4088-bcbb-5c44ca8c4bea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\gui">
+      <UniqueIdentifier>{05b3c719-d673-4200-b240-cd33b6b10f9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\import">
+      <UniqueIdentifier>{740e8a3b-972b-4457-ba0e-9a25581c96cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\input">
+      <UniqueIdentifier>{4845a15d-48aa-467c-8f48-6f689df06954}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\interface">
+      <UniqueIdentifier>{a02ec415-fccc-4379-b4a8-826f5858b20e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\interface\EditorMenu">
+      <UniqueIdentifier>{eaed2e47-ba6e-495f-ab3f-363660a00682}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\render">
+      <UniqueIdentifier>{cad5b9a1-9e95-4dce-9dc8-f92424c3c65b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\render\universal">
+      <UniqueIdentifier>{e9168c7f-56aa-4348-b621-b99b28a21801}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\render\opengl">
+      <UniqueIdentifier>{05d03969-ed95-4489-a22f-c4c53a292499}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps">
+      <UniqueIdentifier>{333ac9d3-2f02-4a50-829d-3d8e54b01a44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\imgui">
+      <UniqueIdentifier>{81a77bc2-c8d1-4101-b136-3f555ccf4932}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\ImGuizmo">
+      <UniqueIdentifier>{a125849c-6b98-4b06-9a4c-343accd92fac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\lodepng">
+      <UniqueIdentifier>{ab7e0302-e4ad-4d31-99e8-8ebe4bdd2709}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

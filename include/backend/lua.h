@@ -9,12 +9,12 @@
 #include <boost/filesystem.hpp>
 #include <iostream>
 
-namespace b = boost;
+namespace bst = boost;
 namespace bfs = boost::filesystem;
 namespace lb = luabridge;
 using namespace std;
 
-class NUKEENGINE_API Lua
+class Lua
 {
 private:
 	Lua();

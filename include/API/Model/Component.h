@@ -8,12 +8,12 @@ class Camera;
 class Light;
 
 
-class NUKEENGINE_API NukeComponent
+class NukeComponent
 {
 public:
     bool enabled = true;
-	Transform* transform;
-	GameObject* gameobject;
+	Transform* transform = nullptr;
+	GameObject* gameobject = nullptr;
     char* name;
     NukeComponent(const char* _name = "NukeComponent") : name((char*)_name){}
 	virtual void Init(GameObject* parent) = 0;

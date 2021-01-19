@@ -7,12 +7,12 @@ namespace bc = boost::container;
 #include "Transform.h"
 #include "Layers.h"
 #include "ID.h"
-
-template class NUKEENGINE_API bc::list<NukeComponent*>;
-template class NUKEENGINE_API bc::list<GameObject*>;
+//
+//template class bc::list<NukeComponent*>;
+//template class bc::list<GameObject*>;
 
 #pragma pack(push, 1)
-class NUKEENGINE_API GameObject
+class GameObject
 {
 protected:
 	

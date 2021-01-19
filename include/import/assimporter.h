@@ -10,7 +10,7 @@
 
 using namespace std;
 
-class NUKEENGINE_API AssImporter
+class AssImporter
 {
 	AssImporter();
 	~AssImporter();

@@ -6,7 +6,7 @@
 #include <imgui/stb_rect_pack.h>
 #include "config.h"
 
-class NUKEENGINE_API GUI
+class GUI
 {
 private:
 	GUI();

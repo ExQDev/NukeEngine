@@ -2,7 +2,7 @@
 #ifndef NUKEE_SHADER_H
 #define NUKEE_SHADER_H
 
-class NUKEENGINE_API Shader
+class Shader
 {
 public:
 

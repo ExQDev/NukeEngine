@@ -1,7 +1,7 @@
 build/
 .vs/
 
-*.vcxproj.*
+*.vcxproj.user
 *.log
 *.tlog
 *.db
@@ -9,6 +9,7 @@ x64/Debug/
 x64/Release/
 Debug/
 Release/
+vcpkg_installed/
 
 a# This file is used to ignore files which are generated
 # ----------------------------------------------------------------------------
@@ -66,7 +67,7 @@ Thumbs.db
 *.ncb
 *.sdf
 *.opensdf
-*vcxproj.*
+*vcxproj.user
 
 # MinGW generated files
 *.Debug

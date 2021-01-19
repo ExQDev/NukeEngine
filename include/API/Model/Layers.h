@@ -17,7 +17,7 @@ const unsigned int  	NUKEE_LAYER_DEFAULT	= 1,
 // }
 //-----------------------------------------------------------------
 
-NUKEENGINE_API enum Layer
+enum Layer
 {
     L_DEFAULT = NUKEE_LAYER_DEFAULT,
     L_EDITOR = NUKEE_LAYER_EDITOR,

@@ -9,7 +9,7 @@
 #include <glm/gtx/quaternion.hpp>
 #include <glm/gtc/quaternion.hpp>
 
-class NUKEENGINE_API Vector2
+class Vector2
 {
 public:
 	double x, y;
@@ -40,7 +40,7 @@ public:
     class Vector4 toVector4();
 };
 
-class NUKEENGINE_API Vector3 : public Vector2
+class Vector3 : public Vector2
 {
 public:
 	double z;
@@ -84,7 +84,7 @@ public:
 };
 
 
-class NUKEENGINE_API Vector4 : public Vector3
+class Vector4 : public Vector3
 {
 public:
 	double w;
@@ -122,7 +122,7 @@ public:
     class Color toColor();
 };
 
-class NUKEENGINE_API Quaternion : public Vector4
+class Quaternion : public Vector4
 {
 public:
 	Quaternion();

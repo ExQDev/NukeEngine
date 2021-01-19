@@ -11,7 +11,7 @@ AppInstance::AppInstance()
 	if (!menuStrip)
 		menuStrip = new MenuStrip();
 	if (!editorWindows)
-		editorWindows = new bc::map<string, b::function<void()>>();
+		editorWindows = new bc::map<string, bst::function<void()>>();
 	cout << "[EditorInstance]\t" << "Current scene is: " << currentScene << "(" << currentScene->name << ")" << ", Hierarchy is: " << &currentScene->GetHierarchy() << endl;
 }
 AppInstance::~AppInstance() {}

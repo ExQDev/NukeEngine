@@ -8,10 +8,10 @@
 #include <boost/container/map.hpp>
 
 namespace bc = boost::container;
-namespace b = boost;
+namespace bst = boost;
 namespace btups = boost::tuples;
 
-class NUKEENGINE_API EditorInstance
+class EditorInstance
 {
 protected:
 	EditorInstance();

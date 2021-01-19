@@ -4,14 +4,15 @@
 #include "Transform.h"
 #include "Material.h"
 #include <assimp/mesh.h>
-//#include <boost/container/list.hpp>
+#include <boost/container/list.hpp>
 #include <memory>
+#include "../../../NukeEngine.h"
 
-//namespace bc = boost::container;
+namespace bc = boost::container;
 //class Mesh;
-//template class NUKEENGINE_API bc::list<Mesh*>;
+//template class bc::list<Mesh*>;
 
-class NUKEENGINE_API Mesh
+class Mesh
 {
 public:
     char name[256];
@@ -21,7 +22,7 @@ public:
 
     int numVerts;
 
-	List<Mesh*>  children;
+	bc::list<Mesh*>  children;
 
 
 	Mesh();

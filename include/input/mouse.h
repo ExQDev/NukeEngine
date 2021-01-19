@@ -3,10 +3,10 @@
 #include <boost/container/list.hpp>
 #include <boost/function.hpp>
 
-namespace b = boost;
-namespace bc = b::container;
+namespace bst = boost;
+namespace bc = boost::container;
 
-class NUKEENGINE_API Mouse
+class Mouse
 {
     friend class NukeOGL;
     friend class NukeBGFX;
@@ -15,12 +15,12 @@ private:
 	Mouse();
 	~Mouse();
 
-    bc::list<b::function<void(int button, int state, int x, int y)>> _onKey;
-    bc::list<b::function<void(int button, int state, int x, int y)>> _onWheel;
-    bc::list<b::function<void(int x, int y)>> _onMove;
-    bc::list<b::function<void(int x, int y)>> _onPMove;
+    bc::list<bst::function<void(int button, int state, int mods)>> _onKey;
+    bc::list<bst::function<void(int button, int state, int x, int y)>> _onWheel;
+    bc::list<bst::function<void(int x, int y)>> _onMove;
+    bc::list<bst::function<void(int x, int y)>> _onPMove;
 
-	void key(int button, int state, int x, int y);
+	void key(int button, int state, int mods);
 	void wheel(int button, int dir, int x, int y);
 	void move(int x, int y);
 	void pmove(int x, int y);
@@ -32,9 +32,9 @@ public:
         return &instance;
     }
 
-	Mouse* operator+=(b::function<void(int button, int state, int x, int y)> onKey);
-	Mouse* operator*=(b::function<void(int button, int dir, int x, int y)> onWheel);
-	Mouse* operator&=(b::function<void(int x, int y)> onMov);
-	Mouse* operator|=(b::function<void(int x, int y)> onPMov);
+	Mouse* operator+=(bst::function<void(int button, int state, int mods)> onKey);
+	Mouse* operator*=(bst::function<void(int button, int dir, int x, int y)> onWheel);
+	Mouse* operator&=(bst::function<void(int x, int y)> onMov);
+	Mouse* operator|=(bst::function<void(int x, int y)> onPMov);
 };
 #endif // MOUSE_H

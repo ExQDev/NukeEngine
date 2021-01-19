@@ -233,10 +233,10 @@ void Camera::Init(GameObject* parent)
 		renderer->init(r_width, r_height);
 	else
 		cout << "[Camera]\t\t" << "[!] Camera of main renderer" << endl;
-	//*KeyBoard::getSingleton() += b::function<void(unsigned char, int, int)>(b::bind(&Camera::ProcessKeyboard, b::ref(*this), _1, _2, _3));
-//        *Mouse::getSingleton() += b::function<void(int, int, int, int)>(b::bind(&Camera::ProcessMouse, b::ref(*this), _1, _2, _3, _4));
-//        *Mouse::getSingleton() &= b::function<void(int, int)>(b::bind(&Camera::ProcessMouseMove, b::ref(*this), _1, _2));
-//        *Mouse::getSingleton() *= b::function<void(int, int, int, int)>(b::bind(&Camera::mouseScroll, b::ref(*this), _1, _2, _3, _4));
+	//*KeyBoard::getSingleton() += bst::function<void(unsigned char, int, int)>(b::bind(&Camera::ProcessKeyboard, bst::ref(*this), _1, _2, _3));
+//        *Mouse::getSingleton() += bst::function<void(int, int, int, int)>(b::bind(&Camera::ProcessMouse, bst::ref(*this), _1, _2, _3, _4));
+//        *Mouse::getSingleton() &= bst::function<void(int, int)>(b::bind(&Camera::ProcessMouseMove, bst::ref(*this), _1, _2));
+//        *Mouse::getSingleton() *= bst::function<void(int, int, int, int)>(b::bind(&Camera::mouseScroll, bst::ref(*this), _1, _2, _3, _4));
 }
 void Camera::FixedUpdate() {}
 void Camera::Update() {

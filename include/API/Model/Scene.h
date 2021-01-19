@@ -4,7 +4,7 @@
 #include "GameObject.h"
 #include <memory>
 
-class NUKEENGINE_API Scene
+class Scene
 {
 protected:
 	bc::list<GameObject*> *hierarchy = nullptr;

@@ -7,7 +7,7 @@
 #include "render/universal/nukebgfx.h"
 #include <boost/bind.hpp>
 
-class NUKEENGINE_API Camera : public NukeComponent
+class Camera : public NukeComponent
 {
 private:
 	boost::thread* renderThread;

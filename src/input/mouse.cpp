@@ -3,11 +3,11 @@
 Mouse::Mouse() {}
 Mouse::~Mouse() {}
 
-void Mouse::key(int button, int state, int x, int y)
+void Mouse::key(int button, int state, int mods)
 {
 	for (auto f : _onKey)
 	{
-		f(button, state, x, y);
+		f(button, state, mods);
 	}
 }
 
@@ -36,25 +36,25 @@ void Mouse::pmove(int x, int y)
 }
 
 
-Mouse* Mouse::operator+=(b::function<void(int button, int state, int x, int y)> onKey)
+Mouse* Mouse::operator+=(bst::function<void(int button, int state, int mods)> onKey)
 {
 	_onKey.push_back(onKey);
 	return this;
 }
 
-Mouse* Mouse::operator*=(b::function<void(int button, int dir, int x, int y)> onWheel)
+Mouse* Mouse::operator*=(bst::function<void(int button, int dir, int x, int y)> onWheel)
 {
 	_onWheel.push_back(onWheel);
 	return this;
 }
 
-Mouse* Mouse::operator&=(b::function<void(int x, int y)> onMov)
+Mouse* Mouse::operator&=(bst::function<void(int x, int y)> onMov)
 {
 	_onMove.push_back(onMov);
 	return this;
 }
 
-Mouse* Mouse::operator|=(b::function<void(int x, int y)> onPMov)
+Mouse* Mouse::operator|=(bst::function<void(int x, int y)> onPMov)
 {
 	_onPMove.push_back(onPMov);
 	return this;

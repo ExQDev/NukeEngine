@@ -2,7 +2,7 @@
 #ifndef NUKEE_ID_H
 #define NUKEE_ID_H
 
-class NUKEENGINE_API ID {
+class ID {
 public:
     long id;
 

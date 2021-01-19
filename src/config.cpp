@@ -1,5 +1,6 @@
 #include "config.h"
 
+#define PREFIX_CONF "[config]\t\t"
 struct confColor luaGetColor(lb::LuaRef ref, const char* name) {
 	auto col = ref[name];
 	struct confColor cc;
@@ -95,17 +96,17 @@ void Config::reload(Config* instance) {
 		bfs::create_directory(configDir);
 	if (!bfs::exists(config))
 	{
-		cout << "[config]\t\t" << "Main config not found, create it please!" << endl;
+		cout << PREFIX_CONF << "Main config not found, create it please!" << endl;
 	}
 	boost::filesystem::recursive_directory_iterator iter(configDir), eod;
 	for (auto& p : iter)
 	{
-		cout << "[config]\t\t" << p.path().string().c_str() << endl;
+		cout << PREFIX_CONF << p.path().string().c_str() << endl;
 		lua->doFile(p.path().string().c_str());
 	}
 	/*lua_dump(lua->l, lua)*/
 	auto w = lb::getGlobal(lua->l, "window");
-	//cout << "[config]\t\t" << "Window ref: " << w << endl;
+	//cout << PREFIX_CONF << "Window ref: " << w.tostring() << endl;
 	if (!w.isNil()) {
 		instance->window = NukeWindow();
 		instance->window.h = w["height"].cast<int>();
@@ -113,8 +114,8 @@ void Config::reload(Config* instance) {
 		std::string fontName = w["mainFont"].cast<std::string>();
 		//strcpy(instance->window.mainFont, fontName.c_str());
 		instance->window.mainFont = (char*)fontName.c_str();
-		cout << "[config]\t\t" << "Window size = [" << instance->window.w << "x" << instance->window.h << "]" << endl;
-		//cout << "FONT IS " << instance->window.mainFont << endl;
+		cout << PREFIX_CONF << "Window size = [" << instance->window.w << "x" << instance->window.h << "]" << endl;
+		cout << PREFIX_CONF << "FONT IS " << instance->window.mainFont << endl;
 	}
 
 	auto t = lb::getGlobal(lua->l, "theme");
@@ -124,7 +125,7 @@ void Config::reload(Config* instance) {
 }
 
 Config::Config() {
-	cout << "[config]\t\t" << "CWD: " << bfs::current_path() << endl;
+	cout << PREFIX_CONF << "CWD: " << bfs::current_path() << endl;
 
 	//reload(this);
 }

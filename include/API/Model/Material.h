@@ -8,7 +8,7 @@
 
 using namespace std;
 
-class NUKEENGINE_API Material
+class Material
 {
 public:
     char* name;

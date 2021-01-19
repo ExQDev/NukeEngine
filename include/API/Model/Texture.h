@@ -2,7 +2,7 @@
 #ifndef NUKEE_TEXTURE_H
 #define NUKEE_TEXTURE_H
 
-class NUKEENGINE_API Texture
+class Texture
 {
 public:
     unsigned int id;

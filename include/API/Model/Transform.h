@@ -5,7 +5,7 @@
 #include "Component.h"
 #include "Vector.h"
 
-class NUKEENGINE_API Transform : public NukeComponent
+class Transform : public NukeComponent
 {
 public:
 	Vector3 position;

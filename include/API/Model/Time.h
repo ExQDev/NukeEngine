@@ -2,7 +2,7 @@
 #ifndef NUKEE_TIME_H
 #define NUKEE_TIME_H
 
-class NUKEENGINE_API Time
+class Time
 {
 private:
 	Time();

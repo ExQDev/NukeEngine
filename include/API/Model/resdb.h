@@ -14,7 +14,7 @@
 
 namespace bc = boost::container;
 
-class NUKEENGINE_API ResDB
+class ResDB
 {
     ResDB() {}
     ~ResDB() {}

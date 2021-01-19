@@ -1,7 +1,7 @@
 #pragma once
 #ifndef NUKEE_COLOR_H
 #define NUKEE_COLOR_H
-class NUKEENGINE_API Color
+class Color
 {
 public:
 	double r, g, b, a;

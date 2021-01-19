@@ -136,7 +136,7 @@ void NukeOGL::specialup(int key, int x, int y) {
 }
 
 void NukeOGL::mouse(int button, int state, int x, int y) {
-	Mouse::getSingleton()->key(button, state, x, y);
+	Mouse::getSingleton()->key(button, state, 0);
 	if (_UImouse)
 		_UImouse(button, state, x, y);
 	if (state == GLUT_UP)
@@ -452,4 +452,26 @@ char* NukeOGL::getVersion()
 	return (char*)"1.0.0";
 }
 
+void NukeOGL::keyboard(int key, int scancode, int action, int mods)
+{
+}
 
+void NukeOGL::mouseMove(double xpos, double ypos)
+{
+}
+
+void NukeOGL::mouseClick(int button, int action, int mods)
+{
+}
+
+void NukeOGL::setCursorMode(int mode)
+{
+}
+
+void NukeOGL::rawMouse(double xpos, double ypos)
+{
+}
+
+void NukeOGL::mouseEnterLeave(int entered)
+{
+}

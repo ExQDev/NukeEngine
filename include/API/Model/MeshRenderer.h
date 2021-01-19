@@ -3,7 +3,7 @@
 #define NUKEE_MESHRENDERER_H
 #include "API/Model/Include.h"
 
-class NUKEENGINE_API MeshRenderer : public NukeComponent
+class MeshRenderer : public NukeComponent
 {
 
 public:

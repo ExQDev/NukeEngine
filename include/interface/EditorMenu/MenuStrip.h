@@ -3,7 +3,7 @@
 #define NUKEE_EDITOR_MENU_STRIP_H
 #include "MenuItem.h"
 
-NUKEENGINE_API struct MenuStrip
+struct MenuStrip
 {
 	boost::container::list<MenuItem*> strip;
 

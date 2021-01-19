@@ -2,7 +2,7 @@
 #define CONFIG_H
 #include <backend/lua.h>
 
-NUKEENGINE_API struct NukeWindow{
+struct NukeWindow{
     int w, h;
     char* mainFont;
     bool hierarchy = true,
@@ -14,17 +14,17 @@ NUKEENGINE_API struct NukeWindow{
             render = true;
 };
 
-NUKEENGINE_API struct confUiVec{
+struct confUiVec{
       int x,y;
 };
 
 
-NUKEENGINE_API struct confColor{
+struct confColor{
       float x,y,z,w;
 };
 
 
-NUKEENGINE_API struct NukeTheme{
+struct NukeTheme{
     bool isLoaded = false;
 
     struct confUiVec WindowPadding;
@@ -84,12 +84,12 @@ NUKEENGINE_API struct NukeTheme{
     struct confColor ImGuiCol_ModalWindowDarkening;
 };
 
-NUKEENGINE_API struct confColor luaGetColor(lb::LuaRef ref, const char* name);
-NUKEENGINE_API struct confUiVec luaGetVector(lb::LuaRef ref, const char* name);
+struct confColor luaGetColor(lb::LuaRef ref, const char* name);
+struct confUiVec luaGetVector(lb::LuaRef ref, const char* name);
 
-NUKEENGINE_API void loadTheme(struct NukeTheme* t, lb::LuaRef _t);
+void loadTheme(struct NukeTheme* t, lb::LuaRef _t);
 
-class NUKEENGINE_API Config
+class Config
 {
 private:
 	Config();

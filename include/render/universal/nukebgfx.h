@@ -28,20 +28,22 @@ static bool s_showStats = false;
 
 static void glfw_errorCallback(int error, const char* description);
 static void glfw_keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
+static void glfw_mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
 
-class NUKEENGINE_API NukeBGFX : public iRender
+class NukeBGFX : public iRender
 {
 private:
     bc::list<b::function<void()>> _onClose;
-    b::function<void()> _physTrigger;
+    bst::function<void()> _physTrigger;
     bc::list<b::function<void(void)>> _onRender;
     bc::list<b::function<void(void)>> _onGUI;
 
     static NukeBGFX* _main;
     GLFWwindow *window = nullptr;
     const bgfx::ViewId kClearView = 0;
-    b::thread* renderThread = nullptr;
+    bst::thread* renderThread = nullptr;
 public:
+	bool _debug = false;
 	NukeBGFX();
 	~NukeBGFX();
 
@@ -65,6 +67,12 @@ public:
 	void setOnRender(b::function<void(void)> cb);
 	void close();
 	void timer();
+	void keyboard(int key, int scancode, int action, int mods);
+	void mouseMove(double xpos, double ypos);
+	void mouseClick(int button, int action, int mods);
+	void setCursorMode(int mode) ;
+	void rawMouse(double xpos, double ypos);
+	void mouseEnterLeave(int entered);
 };
 
 #endif // NUKEBGFX_H

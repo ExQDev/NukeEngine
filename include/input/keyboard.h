@@ -3,10 +3,10 @@
 #include <boost/container/list.hpp>
 #include <boost/function.hpp>
 
-namespace b = boost;
-namespace bc = b::container;
+namespace bst = boost;
+namespace bc = bst::container;
 
-class NUKEENGINE_API KeyBoard
+class KeyBoard
 {
     friend class NukeOGL;
     friend class NukeBGFX;
@@ -15,10 +15,10 @@ private:
 	KeyBoard();
 	~KeyBoard();
 
-    bc::list<b::function<void(unsigned char c, int x, int y)>> _onKey;
-    bc::list<b::function<void(int key, int x, int y)>> _onSpecialKey;
-    bc::list<b::function<void(unsigned char c, int x, int y)>> _onKeyUp;
-    bc::list<b::function<void(int key, int x, int y)>> _onSpecialKeyUp;
+    bc::list<bst::function<void(unsigned char c, int x, int y)>> _onKey;
+    bc::list<bst::function<void(int key, int x, int y)>> _onSpecialKey;
+    bc::list<bst::function<void(unsigned char c, int x, int y)>> _onKeyUp;
+    bc::list<bst::function<void(int key, int x, int y)>> _onSpecialKeyUp;
     bool* keyStates = new bool[256];
 
 	void key(unsigned char c, int x, int y);
@@ -37,12 +37,12 @@ public:
 	bool getKeyPressed(unsigned char c);
 
     // On Key
-	KeyBoard* operator+=(b::function<void(unsigned char c, int x, int y)> onKey);
+	KeyBoard* operator+=(bst::function<void(unsigned char c, int x, int y)> onKey);
     // On Special Key
-	KeyBoard* operator*=(b::function<void(int key, int x, int y)> onSpecialKey);
+	KeyBoard* operator*=(bst::function<void(int key, int x, int y)> onSpecialKey);
     // On Key Up
-	KeyBoard* operator&=(b::function<void(unsigned char c, int x, int y)> onKeyUp);
+	KeyBoard* operator&=(bst::function<void(unsigned char c, int x, int y)> onKeyUp);
     // On Special Key Up
-	KeyBoard* operator|=(b::function<void(int key, int x, int y)> onSpecialKeyUp);
+	KeyBoard* operator|=(bst::function<void(int key, int x, int y)> onSpecialKeyUp);
 };
 #endif // KEYBOARD_H

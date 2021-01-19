@@ -6,7 +6,7 @@
 #include <boost/tokenizer.hpp>
 #include <functional>
 
-NUKEENGINE_API struct MenuItem
+ struct MenuItem
 {
 	std::string name;
 	//boost::function<void> b_callback;

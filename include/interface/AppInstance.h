@@ -15,7 +15,7 @@
 
 namespace bc = boost::container;
 
-class NUKEENGINE_API AppInstance
+class AppInstance
 {
 protected:
 	AppInstance();
@@ -27,8 +27,8 @@ public:
 	GameObject* selectedInHieararchy = nullptr;
 	int manipulationMode = 0;
 	int manipulationWorld = 0;
-	//bc::list<btups::tuple<string, b::function<void()>>> editorWindows;
-	bc::map<string, b::function<void()>>* editorWindows = nullptr;
+	//bc::list<btups::tuple<string, bst::function<void()>>> editorWindows;
+	bc::map<string, bst::function<void()>>* editorWindows = nullptr;
 
 	void PushWindow(const char* key, boost::function<void()> fWindow);
 
