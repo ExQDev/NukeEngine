@@ -3,8 +3,11 @@
 #include <boost/function.hpp>
 #include <API/Model/Transform.h>
 #include <API/Model/Mesh.h>
+#include <API/Model/Material.h>
 
 namespace b = boost;
+
+NUKEENGINE_API class iRender;
 
 class iRender
 {

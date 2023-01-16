@@ -1,6 +1,7 @@
 #pragma once
 #ifndef NUKEE_GAMEOBJECT_H
 #define NUKEE_GAMEOBJECT_H
+#include <iostream>
 #include <boost/container/list.hpp>
 namespace bc = boost::container;
 
@@ -10,6 +11,7 @@ namespace bc = boost::container;
 //
 //template class bc::list<NukeComponent*>;
 //template class bc::list<GameObject*>;
+NUKEENGINE_API class GameObject;
 
 #pragma pack(push, 1)
 class GameObject
@@ -90,4 +92,5 @@ private:
 
 };
 #pragma pack(pop)
+
 #endif // !NUKEE_GAMEOBJECT_H

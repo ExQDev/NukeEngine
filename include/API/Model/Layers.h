@@ -1,4 +1,5 @@
 #pragma once
+#include "NukeEngine.hpp"
 #ifndef NUKEE_LAYERS_H
 #define NUKEE_LAYERS_H
 
@@ -17,7 +18,7 @@ const unsigned int  	NUKEE_LAYER_DEFAULT	= 1,
 // }
 //-----------------------------------------------------------------
 
-enum Layer
+NUKEENGINE_API enum Layer
 {
     L_DEFAULT = NUKEE_LAYER_DEFAULT,
     L_EDITOR = NUKEE_LAYER_EDITOR,

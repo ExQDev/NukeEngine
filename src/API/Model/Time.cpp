@@ -1,10 +1,11 @@
 #include "API/Model/Time.h"
+#include <unistd.h>
 
-Time::Time() {}
+NukeTime::NukeTime() {}
 
-Time::~Time() {}
+NukeTime::~NukeTime() {}
 
-void Time::TickMonth()
+void NukeTime::TickMonth()
 {
 	if (month == 12)
 	{
@@ -14,7 +15,7 @@ void Time::TickMonth()
 	}
 }
 
-void Time::TickDay()
+void NukeTime::TickDay()
 {
 	if ((doy == 366 && year % 4 == 0) || (doy == 365 && year % 4))
 	{
@@ -43,7 +44,7 @@ void Time::TickDay()
 	totalgd++;
 }
 
-void Time::TickHour()
+void NukeTime::TickHour()
 {
 	hour++;
 	if (hour == 24)
@@ -53,7 +54,7 @@ void Time::TickHour()
 	}
 }
 
-void Time::TickMinute()
+void NukeTime::TickMinute()
 {
 	minute++;
 	if (minute == 60)
@@ -63,7 +64,7 @@ void Time::TickMinute()
 	}
 }
 
-void Time::TickSecond()
+void NukeTime::TickSecond()
 {
 	sec++;
 	if (sec == 60)
@@ -75,7 +76,7 @@ void Time::TickSecond()
 }
 
 //Ticker
-void Time::Tick()
+void NukeTime::Tick()
 {
 	int toSleep = 1000 * gtr;
 #ifdef WIN32
@@ -86,7 +87,7 @@ void Time::Tick()
 	TickSecond();
 }
 
-int Time::CalcDayOfYear(int day, int month, int year)
+int NukeTime::CalcDayOfYear(int day, int month, int year)
 {
 	int dayofy = 0;
 	for (int i = 1; i < month; i++)
@@ -121,12 +122,12 @@ int Time::CalcDayOfYear(int day, int month, int year)
 	return dayofy;
 }
 
-int Time::CalcWeekOfYear(int dayofyear)
+int NukeTime::CalcWeekOfYear(int dayofyear)
 {
 	return (dayofyear / 7) + 1;
 }
 
-void Time::Init()
+void NukeTime::Init()
 {
 	gtr = 0.05;
 	day = 1;
@@ -135,7 +136,7 @@ void Time::Init()
 	woy = 1;
 }
 
-void Time::Init(double gtr, int day, int month, int year)
+void NukeTime::Init(double gtr, int day, int month, int year)
 {
 	this->gtr= gtr;
 	this->day = day;
@@ -144,25 +145,25 @@ void Time::Init(double gtr, int day, int month, int year)
 	woy = 1;
 }
 
-void Time::Init(double gtr, int day, int month, int year, int hour)
+void NukeTime::Init(double gtr, int day, int month, int year, int hour)
 {
 	this->Init(gtr, day, month, year);
 	this->hour = hour;
 }
 
-void Time::Init(double gtr, int day, int month, int year, int hour, int minute)
+void NukeTime::Init(double gtr, int day, int month, int year, int hour, int minute)
 {
 	this->Init(gtr, day, month, year, hour);
 	this->minute = minute;
 }
 
-void Time::Init(double gtr, int day, int month, int year, int hour, int minute, int sec)
+void NukeTime::Init(double gtr, int day, int month, int year, int hour, int minute, int sec)
 {
 	this->Init(gtr, day, month, year, hour, minute);
 	this->sec = sec;
 }
 
-void Time::Run()
+void NukeTime::Run()
 {
 	Tick();
 }

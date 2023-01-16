@@ -4,6 +4,8 @@
 #include "GameObject.h"
 #include <memory>
 
+NUKEENGINE_API class Scene;
+
 class Scene
 {
 protected:

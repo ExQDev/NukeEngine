@@ -1,14 +1,13 @@
 #pragma once
 #ifndef NUKEE_MESH_H
 #define NUKEE_MESH_H
-#include "Transform.h"
-#include "Material.h"
+#include "NukeEngine.hpp"
 #include <assimp/mesh.h>
 #include <boost/container/list.hpp>
 #include <memory>
-#include "../../../NukeEngine.h"
 
 namespace bc = boost::container;
+NUKEENGINE_API class Mesh;
 //class Mesh;
 //template class bc::list<Mesh*>;
 

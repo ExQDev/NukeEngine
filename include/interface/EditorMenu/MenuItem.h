@@ -1,12 +1,13 @@
 #pragma once
-#ifndef GDK_EDITOR_MENU_ITEM_H
-#define GDK_EDITOR_MENU_ITEM_H
+#include "NukeEngine.hpp"
+#ifndef NUKEE_MENU_ITEM_H
+#define NUKEE_MENU_ITEM_H
 #include <vector>
 #include <boost/container/list.hpp>
 #include <boost/tokenizer.hpp>
 #include <functional>
 
- struct MenuItem
+NUKEENGINE_API struct MenuItem
 {
 	std::string name;
 	//boost::function<void> b_callback;
@@ -121,4 +122,4 @@
 
 
 };
-#endif // !GDK_EDITOR_MENU_ITEM_H
+#endif // !NUKEE_MENU_ITEM_H

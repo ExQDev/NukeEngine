@@ -30,6 +30,8 @@ static void glfw_errorCallback(int error, const char* description);
 static void glfw_keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 static void glfw_mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
 
+NUKEENGINE_API class NukeBGFX;
+
 class NukeBGFX : public iRender
 {
 private:
@@ -44,6 +46,8 @@ private:
     bst::thread* renderThread = nullptr;
 public:
 	bool _debug = false;
+    bgfx::RendererType::Enum rendererType = bgfx::RendererType::OpenGL;
+
 	NukeBGFX();
 	~NukeBGFX();
 
@@ -54,6 +58,7 @@ public:
         return _main;
     }
 
+    GLFWwindow* getWindow();
 	int init(int w, int h);
 	int render();
 	void renderObject(Mesh* mesh, Material* mat, Transform* transform);
@@ -73,6 +78,7 @@ public:
 	void setCursorMode(int mode) ;
 	void rawMouse(double xpos, double ypos);
 	void mouseEnterLeave(int entered);
+    void setWindowShouldClose();
 };
 
 #endif // NUKEBGFX_H

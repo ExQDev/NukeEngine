@@ -13,6 +13,7 @@
 #endif
 
 namespace bc = boost::container;
+NUKEENGINE_API class ResDB;
 
 class ResDB
 {

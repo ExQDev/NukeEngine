@@ -1,10 +1,13 @@
 #ifndef KEYBOARD_H
 #define KEYBOARD_H
+#include "NukeEngine.hpp"
 #include <boost/container/list.hpp>
 #include <boost/function.hpp>
 
 namespace bst = boost;
 namespace bc = bst::container;
+
+NUKEENGINE_API class KeyBoard;
 
 class KeyBoard
 {

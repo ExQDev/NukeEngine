@@ -1,4 +1,5 @@
 #pragma once
+#include "NukeEngine.hpp"
 #ifndef NUKEE_VECTOR_H
 #define NUKEE_VECTOR_H
 #include <string>
@@ -8,6 +9,11 @@
 #include <glm/ext.hpp>
 #include <glm/gtx/quaternion.hpp>
 #include <glm/gtc/quaternion.hpp>
+
+NUKEENGINE_API class Vector2;
+NUKEENGINE_API class Vector3;
+NUKEENGINE_API class Vector4;
+NUKEENGINE_API class Quaternion;
 
 class Vector2
 {

@@ -1,4 +1,5 @@
 #pragma once
+#include "NukeEngine.hpp"
 #ifndef NUKEE_MATERIAL_H
 #define NUKEE_MATERIAL_H
 #include <iostream>
@@ -7,6 +8,7 @@
 #include <assimp/material.h>
 
 using namespace std;
+NUKEENGINE_API class Material;
 
 class Material
 {

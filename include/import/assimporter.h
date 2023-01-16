@@ -10,6 +10,8 @@
 
 using namespace std;
 
+NUKEENGINE_API class AssImporter;
+
 class AssImporter
 {
 	AssImporter();

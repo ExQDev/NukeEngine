@@ -5,6 +5,8 @@
 #include "Component.h"
 #include "Vector.h"
 
+NUKEENGINE_API class Transform;
+
 class Transform : public NukeComponent
 {
 public:

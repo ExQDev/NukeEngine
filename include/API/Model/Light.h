@@ -1,7 +1,10 @@
 #pragma once
 #ifndef NUKEE_LIGHT_H
 #define NUKEE_LIGHT_H
-#include "Include.h"
+#include "Component.h"
+#include "Color.h"
+
+NUKEENGINE_API class Light;
 
 class Light : public NukeComponent
 {

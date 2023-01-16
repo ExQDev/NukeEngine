@@ -7,7 +7,7 @@ using namespace boost;
 #include "AppInstance.h"
 
 
-class BOOST_SYMBOL_EXPORT NUKEModule {
+NUKEENGINE_API class NUKEModule {
 public:
 	//Title of the plugin
 	char title[256];

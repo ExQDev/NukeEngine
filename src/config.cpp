@@ -1,6 +1,7 @@
-#include "config.h"
+#include "config.hpp"
 
 #define PREFIX_CONF "[config]\t\t"
+
 struct confColor luaGetColor(lb::LuaRef ref, const char* name) {
 	auto col = ref[name];
 	struct confColor cc;
@@ -37,7 +38,7 @@ void loadTheme(struct NukeTheme* t, lb::LuaRef _t) {
 	t->ImGuiCol_Text = luaGetColor(_t, "ImGuiCol_Text");
 	t->ImGuiCol_TextDisabled = luaGetColor(_t, "ImGuiCol_TextDisabled");
 	t->ImGuiCol_WindowBg = luaGetColor(_t, "ImGuiCol_WindowBg");
-	t->ImGuiCol_ChildWindowBg = luaGetColor(_t, "ImGuiCol_ChildWindowBg");
+    t->ImGuiCol_ChildBg = luaGetColor(_t, "ImGuiCol_ChildBg");
 	t->ImGuiCol_PopupBg = luaGetColor(_t, "ImGuiCol_PopupBg");
 	t->ImGuiCol_Border = luaGetColor(_t, "ImGuiCol_Border");
 	t->ImGuiCol_BorderShadow = luaGetColor(_t, "ImGuiCol_BorderShadow");
@@ -62,9 +63,9 @@ void loadTheme(struct NukeTheme* t, lb::LuaRef _t) {
 	t->ImGuiCol_Header = luaGetColor(_t, "ImGuiCol_Header");
 	t->ImGuiCol_HeaderHovered = luaGetColor(_t, "ImGuiCol_HeaderHovered");
 	t->ImGuiCol_HeaderActive = luaGetColor(_t, "ImGuiCol_HeaderActive");
-	t->ImGuiCol_Column = luaGetColor(_t, "ImGuiCol_Column");
-	t->ImGuiCol_ColumnHovered = luaGetColor(_t, "ImGuiCol_ColumnHovered");
-	t->ImGuiCol_ColumnActive = luaGetColor(_t, "ImGuiCol_ColumnActive");
+    t->ImGuiCol_Separator = luaGetColor(_t, "ImGuiCol_Separator");
+    t->ImGuiCol_SeparatorHovered = luaGetColor(_t, "ImGuiCol_SeparatorHovered");
+    t->ImGuiCol_SeparatorActive = luaGetColor(_t, "ImGuiCol_SeparatorActive");
 	t->ImGuiCol_ResizeGrip = luaGetColor(_t, "ImGuiCol_ResizeGrip");
 	t->ImGuiCol_ResizeGripHovered = luaGetColor(_t, "ImGuiCol_ResizeGripHovered");
 	t->ImGuiCol_ResizeGripActive = luaGetColor(_t, "ImGuiCol_ResizeGripActive");
@@ -76,15 +77,9 @@ void loadTheme(struct NukeTheme* t, lb::LuaRef _t) {
 	t->ImGuiCol_PlotHistogram = luaGetColor(_t, "ImGuiCol_PlotHistogram");
 	t->ImGuiCol_PlotHistogramHovered = luaGetColor(_t, "ImGuiCol_PlotHistogramHovered");
 	t->ImGuiCol_TextSelectedBg = luaGetColor(_t, "ImGuiCol_TextSelectedBg");
-	t->ImGuiCol_ModalWindowDarkening = luaGetColor(_t, "ImGuiCol_ModalWindowDarkening");
+    t->ImGuiCol_ModalWindowDimBg = luaGetColor(_t, "ImGuiCol_ModalWindowDimBg");
 
 	t->isLoaded = true;
-}
-
-Config* Config::getSingleton() {
-	static Config instance;
-	instance.reload(&instance);
-	return &instance;
 }
 
 void Config::reload(Config* instance) {
@@ -130,3 +125,15 @@ Config::Config() {
 	//reload(this);
 }
 Config::~Config() {}
+
+NukeWindow* Config::getWindow() {
+    return &this->window;
+}
+
+NukeTheme* Config::getTheme() {
+    return &this->theme;
+}
+
+std::string Config::getMainFont(){
+    return std::string(window.mainFont);
+}

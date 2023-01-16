@@ -1,16 +1,19 @@
 #pragma once
+#include "NukeEngine.hpp"
 #ifndef NUKEE_TIME_H
 #define NUKEE_TIME_H
 
-class Time
+NUKEENGINE_API class NukeTime;
+
+class NukeTime
 {
 private:
-	Time();
-	~Time();
+    NukeTime();
+    ~NukeTime();
 public:
-	static Time * getSingleton() 
+    static NukeTime * getSingleton()
 	{
-		static Time instance;
+        static NukeTime instance;
 		return &instance;
 	}
 	

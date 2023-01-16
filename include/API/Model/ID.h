@@ -1,6 +1,9 @@
 #pragma once
 #ifndef NUKEE_ID_H
 #define NUKEE_ID_H
+#include "NukeEngine.hpp"
+
+NUKEENGINE_API class ID;
 
 class ID {
 public:

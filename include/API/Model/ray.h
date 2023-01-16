@@ -3,7 +3,7 @@
 #include "Vector.h"
 #include "Collider.h"
 
-struct Ray
+NUKEENGINE_API struct Ray
 {
     Vector3 start;
     Vector3 direction;

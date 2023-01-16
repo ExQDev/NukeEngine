@@ -1,10 +1,11 @@
 #ifndef GUI_H
 #define GUI_H
-#include <imgui/imgui.h>
-#include <imgui/imgui_internal.h>
-#include <imgui/imconfig.h>
-#include <imgui/stb_rect_pack.h>
-#include "config.h"
+#include <imgui-1.89.1/imgui.h>
+#include <imgui-1.89.1/imgui_internal.h>
+#include <imgui-1.89.1/imconfig.h>
+#include "config.hpp"
+
+NUKEENGINE_API class GUI;
 
 class GUI
 {

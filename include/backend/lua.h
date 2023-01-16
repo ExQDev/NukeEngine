@@ -1,5 +1,6 @@
 #ifndef LUA_H
 #define LUA_H
+#include "NukeEngine.hpp"
 #ifdef __APPLE__
 #include <lua/lua.hpp>
 #else
@@ -13,6 +14,8 @@ namespace bst = boost;
 namespace bfs = boost::filesystem;
 namespace lb = luabridge;
 using namespace std;
+
+NUKEENGINE_API class Lua;
 
 class Lua
 {

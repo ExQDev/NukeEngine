@@ -30,7 +30,7 @@ void GUI::setup(ImGuiContext* context) {
 		style->Colors[ImGuiCol_Text] = confColor2ImVec(nt->ImGuiCol_Text);
 		style->Colors[ImGuiCol_TextDisabled] = confColor2ImVec(nt->ImGuiCol_TextDisabled);
 		style->Colors[ImGuiCol_WindowBg] = confColor2ImVec(nt->ImGuiCol_WindowBg);
-		style->Colors[ImGuiCol_ChildWindowBg] = confColor2ImVec(nt->ImGuiCol_ChildWindowBg);
+        style->Colors[ImGuiCol_ChildBg] = confColor2ImVec(nt->ImGuiCol_ChildBg);
 		style->Colors[ImGuiCol_PopupBg] = confColor2ImVec(nt->ImGuiCol_PopupBg);
 		style->Colors[ImGuiCol_Border] = confColor2ImVec(nt->ImGuiCol_Border);
 		style->Colors[ImGuiCol_BorderShadow] = confColor2ImVec(nt->ImGuiCol_BorderShadow);
@@ -55,9 +55,9 @@ void GUI::setup(ImGuiContext* context) {
 		style->Colors[ImGuiCol_Header] = confColor2ImVec(nt->ImGuiCol_Header);
 		style->Colors[ImGuiCol_HeaderHovered] = confColor2ImVec(nt->ImGuiCol_HeaderHovered);
 		style->Colors[ImGuiCol_HeaderActive] = confColor2ImVec(nt->ImGuiCol_HeaderActive);
-		style->Colors[ImGuiCol_Column] = confColor2ImVec(nt->ImGuiCol_Column);
-		style->Colors[ImGuiCol_ColumnHovered] = confColor2ImVec(nt->ImGuiCol_ColumnHovered);
-		style->Colors[ImGuiCol_ColumnActive] = confColor2ImVec(nt->ImGuiCol_ColumnActive);
+        style->Colors[ImGuiCol_Separator] = confColor2ImVec(nt->ImGuiCol_Separator);
+        style->Colors[ImGuiCol_SeparatorHovered] = confColor2ImVec(nt->ImGuiCol_SeparatorHovered);
+        style->Colors[ImGuiCol_SeparatorActive] = confColor2ImVec(nt->ImGuiCol_SeparatorActive);
 		style->Colors[ImGuiCol_ResizeGrip] = confColor2ImVec(nt->ImGuiCol_ResizeGrip);
 		style->Colors[ImGuiCol_ResizeGripHovered] = confColor2ImVec(nt->ImGuiCol_ResizeGripHovered);
 		style->Colors[ImGuiCol_ResizeGripActive] = confColor2ImVec(nt->ImGuiCol_ResizeGripActive);
@@ -69,7 +69,7 @@ void GUI::setup(ImGuiContext* context) {
 		style->Colors[ImGuiCol_PlotHistogram] = confColor2ImVec(nt->ImGuiCol_PlotHistogram);
 		style->Colors[ImGuiCol_PlotHistogramHovered] = confColor2ImVec(nt->ImGuiCol_PlotHistogramHovered);
 		style->Colors[ImGuiCol_TextSelectedBg] = confColor2ImVec(nt->ImGuiCol_TextSelectedBg);
-		style->Colors[ImGuiCol_ModalWindowDarkening] = confColor2ImVec(nt->ImGuiCol_ModalWindowDarkening);
+        style->Colors[ImGuiCol_ModalWindowDimBg] = confColor2ImVec(nt->ImGuiCol_ModalWindowDimBg);
 	}
 	else
 	{
@@ -97,7 +97,7 @@ void GUI::setupDefault(ImGuiContext* context) {
 	style->Colors[ImGuiCol_Text] = ImVec4(0.80f, 0.80f, 0.83f, 1.00f);
 	style->Colors[ImGuiCol_TextDisabled] = ImVec4(0.24f, 0.23f, 0.29f, 1.00f);
 	style->Colors[ImGuiCol_WindowBg] = ImVec4(0.06f, 0.05f, 0.07f, 1.00f);
-	style->Colors[ImGuiCol_ChildWindowBg] = ImVec4(0.07f, 0.07f, 0.09f, 1.00f);
+    style->Colors[ImGuiCol_ChildBg] = ImVec4(0.07f, 0.07f, 0.09f, 1.00f);
 	style->Colors[ImGuiCol_PopupBg] = ImVec4(0.07f, 0.07f, 0.09f, 1.00f);
 	style->Colors[ImGuiCol_Border] = ImVec4(0.80f, 0.80f, 0.80f, 0.48f);
 	style->Colors[ImGuiCol_BorderShadow] = ImVec4(0.80f, 0.80f, 0.80f, 0.00f);
@@ -122,9 +122,9 @@ void GUI::setupDefault(ImGuiContext* context) {
 	style->Colors[ImGuiCol_Header] = ImVec4(0.10f, 0.09f, 0.12f, 1.00f);
 	style->Colors[ImGuiCol_HeaderHovered] = ImVec4(0.56f, 0.56f, 0.58f, 1.00f);
 	style->Colors[ImGuiCol_HeaderActive] = ImVec4(0.06f, 0.05f, 0.07f, 1.00f);
-	style->Colors[ImGuiCol_Column] = ImVec4(0.56f, 0.56f, 0.58f, 1.00f);
-	style->Colors[ImGuiCol_ColumnHovered] = ImVec4(0.24f, 0.23f, 0.29f, 1.00f);
-	style->Colors[ImGuiCol_ColumnActive] = ImVec4(0.56f, 0.56f, 0.58f, 1.00f);
+    style->Colors[ImGuiCol_Separator] = ImVec4(0.56f, 0.56f, 0.58f, 1.00f);
+    style->Colors[ImGuiCol_SeparatorHovered] = ImVec4(0.24f, 0.23f, 0.29f, 1.00f);
+    style->Colors[ImGuiCol_SeparatorActive] = ImVec4(0.56f, 0.56f, 0.58f, 1.00f);
 	style->Colors[ImGuiCol_ResizeGrip] = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
 	style->Colors[ImGuiCol_ResizeGripHovered] = ImVec4(0.56f, 0.56f, 0.58f, 1.00f);
 	style->Colors[ImGuiCol_ResizeGripActive] = ImVec4(0.06f, 0.05f, 0.07f, 1.00f);
@@ -136,5 +136,5 @@ void GUI::setupDefault(ImGuiContext* context) {
 	style->Colors[ImGuiCol_PlotHistogram] = ImVec4(0.40f, 0.39f, 0.38f, 0.63f);
 	style->Colors[ImGuiCol_PlotHistogramHovered] = ImVec4(0.25f, 1.00f, 0.00f, 1.00f);
 	style->Colors[ImGuiCol_TextSelectedBg] = ImVec4(0.25f, 1.00f, 0.00f, 0.43f);
-	style->Colors[ImGuiCol_ModalWindowDarkening] = ImVec4(1.00f, 0.98f, 0.95f, 0.73f);
+    style->Colors[ImGuiCol_ModalWindowDimBg] = ImVec4(1.00f, 0.98f, 0.95f, 0.73f);
 }

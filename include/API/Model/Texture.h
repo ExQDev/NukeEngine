@@ -1,6 +1,9 @@
 #pragma once
+#include "NukeEngine.hpp"
 #ifndef NUKEE_TEXTURE_H
 #define NUKEE_TEXTURE_H
+
+NUKEENGINE_API class Texture;
 
 class Texture
 {

@@ -1,11 +1,15 @@
 #pragma once
+#include "Component.h"
+#include "GameObject.h"
+#include "Material.h"
+#include "Mesh.h"
 #ifndef NUKEE_MESHRENDERER_H
 #define NUKEE_MESHRENDERER_H
-#include "API/Model/Include.h"
+
+NUKEENGINE_API class MeshRenderer;
 
 class MeshRenderer : public NukeComponent
 {
-
 public:
     Mesh        *mesh;
     Material    *mat;

@@ -2,9 +2,9 @@
 #define CONFIG_H
 #include <backend/lua.h>
 
-struct NukeWindow{
+NUKEENGINE_API struct NukeWindow{
     int w, h;
-    char* mainFont;
+    std::string mainFont;
     bool hierarchy = true,
             console = true,
             browser = true,
@@ -14,17 +14,17 @@ struct NukeWindow{
             render = true;
 };
 
-struct confUiVec{
+NUKEENGINE_API struct confUiVec{
       int x,y;
 };
 
 
-struct confColor{
+NUKEENGINE_API struct confColor{
       float x,y,z,w;
 };
 
 
-struct NukeTheme{
+NUKEENGINE_API struct NukeTheme{
     bool isLoaded = false;
 
     struct confUiVec WindowPadding;
@@ -42,7 +42,7 @@ struct NukeTheme{
     struct confColor ImGuiCol_Text;
     struct confColor ImGuiCol_TextDisabled;
     struct confColor ImGuiCol_WindowBg;
-    struct confColor ImGuiCol_ChildWindowBg;
+    struct confColor ImGuiCol_ChildBg;
     struct confColor ImGuiCol_PopupBg;
     struct confColor ImGuiCol_Border;
     struct confColor ImGuiCol_BorderShadow;
@@ -67,9 +67,9 @@ struct NukeTheme{
     struct confColor ImGuiCol_Header;
     struct confColor ImGuiCol_HeaderHovered;
     struct confColor ImGuiCol_HeaderActive;
-    struct confColor ImGuiCol_Column;
-    struct confColor ImGuiCol_ColumnHovered;
-    struct confColor ImGuiCol_ColumnActive;
+    struct confColor ImGuiCol_Separator;
+    struct confColor ImGuiCol_SeparatorHovered;
+    struct confColor ImGuiCol_SeparatorActive;
     struct confColor ImGuiCol_ResizeGrip;
     struct confColor ImGuiCol_ResizeGripHovered;
     struct confColor ImGuiCol_ResizeGripActive;
@@ -81,23 +81,33 @@ struct NukeTheme{
     struct confColor ImGuiCol_PlotHistogram;
     struct confColor ImGuiCol_PlotHistogramHovered;
     struct confColor ImGuiCol_TextSelectedBg;
-    struct confColor ImGuiCol_ModalWindowDarkening;
+    struct confColor ImGuiCol_ModalWindowDimBg;
 };
 
-struct confColor luaGetColor(lb::LuaRef ref, const char* name);
-struct confUiVec luaGetVector(lb::LuaRef ref, const char* name);
+NUKEENGINE_API struct confColor luaGetColor(lb::LuaRef ref, const char* name);
+NUKEENGINE_API struct confUiVec luaGetVector(lb::LuaRef ref, const char* name);
 
-void loadTheme(struct NukeTheme* t, lb::LuaRef _t);
+NUKEENGINE_API void loadTheme(struct NukeTheme* t, lb::LuaRef _t);
+
+NUKEENGINE_API class Config;
 
 class Config
 {
 private:
 	Config();
 	~Config();
+
 public:
     NukeWindow window {};
     NukeTheme theme{};
 	void reload(Config* instance);
-	static Config* getSingleton();
+    static Config* getSingleton(){
+        static Config instance;
+        instance.reload(&instance);
+        return &instance;
+    }
+    NukeWindow* getWindow();
+    NukeTheme* getTheme();
+    std::string getMainFont();
 };
 #endif // CONFIG_H

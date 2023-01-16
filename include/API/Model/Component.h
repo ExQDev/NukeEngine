@@ -1,12 +1,15 @@
 #pragma once
 #ifndef NUKEE_COMPONENT_H
 #define NUKEE_COMPONENT_H
+#include "NukeEngine.hpp"
+
 class GameObject;
 class Transform;
 class Script;
 class Camera;
 class Light;
 
+NUKEENGINE_API class NukeComponent;
 
 class NukeComponent
 {

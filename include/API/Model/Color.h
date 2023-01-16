@@ -1,6 +1,10 @@
 #pragma once
 #ifndef NUKEE_COLOR_H
 #define NUKEE_COLOR_H
+#include "NukeEngine.hpp"
+
+NUKEENGINE_API class Color;
+
 class Color
 {
 public:

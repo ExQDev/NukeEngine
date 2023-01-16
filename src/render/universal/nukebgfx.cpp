@@ -25,28 +25,41 @@ NukeBGFX::NukeBGFX() {
 }
 NukeBGFX::~NukeBGFX() {}
 
+GLFWwindow* NukeBGFX::getWindow(){
+    return window;
+}
+
 int NukeBGFX::init(int w = 1280, int h = 720) {
 	cout << "[NukeBGFX]\t\t" << "Called init of render(" << w << ", " << h << ")" << endl;
 	glfwSetErrorCallback(glfw_errorCallback);
+    cout << "[NukeBGFX]\t\t" << "Init glfw" << endl;
 	if (!glfwInit())
 		return 1;
-	glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+    cout << "[NukeBGFX]\t\t" << "Hint glfw" << endl;
+    glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+    cout << "[NukeBGFX]\t\t" << "Create window" << endl;
 	window = glfwCreateWindow(w, h, "NukeEngine Editor", nullptr, nullptr);
 	if (!window)
 		return 1;
-	
+    cout << "[NukeBGFX]\t\t" << "Setup callbacks" << endl;
 	glfwSetKeyCallback(window, glfw_keyCallback);
 	glfwSetMouseButtonCallback(window, glfw_mouse_button_callback);
 
+    cout << "[NukeBGFX]\t\t" << "Load icons" << endl;
 	GLFWimage images[2];
-	images[0] = decodeOneStep("res/logo.png");
-	images[1] = decodeOneStep("res/logo.png");
+    images[0] = decodeOneStep("res/logo_x64.png");
+    images[1] = decodeOneStep("res/logo_x64.png");
+    cout << "[NukeBGFX]\t\t" << "Set window icons" << endl;
 	glfwSetWindowIcon(window, 2, images);
 
+    cout << "[NukeBGFX]\t\t" << "First render" << endl;
 	// Most graphics APIs must be used on the same thread that created the window.
-	bgfx::renderFrame();
+    if (_main == this)
+        bgfx::renderFrame();
+    cout << "[NukeBGFX]\t\t" << "Init bgfx" << endl;
 	// Initialize bgfx using the native window handle and window resolution.
 	bgfx::Init init;
+    init.type = ((NukeBGFX*)NukeBGFX::getSingleton())->rendererType;
 #if BX_PLATFORM_LINUX || BX_PLATFORM_BSD
 	init.platformData.ndt = glfwGetX11Display();
 	init.platformData.nwh = (void*)(uintptr_t)glfwGetX11Window(window);
@@ -55,18 +68,21 @@ int NukeBGFX::init(int w = 1280, int h = 720) {
 #elif BX_PLATFORM_WINDOWS
 	init.platformData.nwh = glfwGetWin32Window(window);
 #endif
+    cout << "[NukeBGFX]\t\t" << "Window handle " << init.platformData.nwh << endl;
 	int width, height;
 	glfwGetWindowSize(window, &width, &height);
 	init.resolution.width = (uint32_t)width;
 	init.resolution.height = (uint32_t)height;
 	init.resolution.reset = BGFX_RESET_VSYNC;
+    cout << "[NukeBGFX]\t\t" << "Init " << init.platformData.nwh << endl;
 	if (!bgfx::init(init))
 		return 1;
 
-
+    cout << "[NukeBGFX]\t\t" << "Init complete " << init.platformData.nwh << endl;
 	bgfx::setViewClear(kClearView, BGFX_CLEAR_COLOR);
 	bgfx::setViewRect(kClearView, 0, 0, bgfx::BackbufferRatio::Equal);
 
+//    cout << "[NukeBGFX]\t\t" << "Init UI " << init.platformData.nwh << endl;
 	if (_UIinit) {
 		cout << "[NukeBGFX]\t\t" << "Init UI" << endl;
 		_UIinit();
@@ -76,15 +92,19 @@ int NukeBGFX::init(int w = 1280, int h = 720) {
 }
 
 int NukeBGFX::render() {
+    cout << "[NukeBGFX]\t\t" << "Render: Window handle " << window << endl;
 	glfwPollEvents();
 	// Handle window resize.
 	int oldWidth = width, oldHeight = height;
 	glfwGetWindowSize(window, &width, &height);
+    cout << "[NukeBGFX]\t\t" << "Window size " << width << " " << height << endl;
 	if (width != oldWidth || height != oldHeight) {
 		bgfx::reset((uint32_t)width, (uint32_t)height, BGFX_RESET_VSYNC);
 		bgfx::setViewRect(kClearView, 0, 0, bgfx::BackbufferRatio::Equal);
 	}
+    cout << "[NukeBGFX]\t\t" << "Reset window " << endl;
 	// This dummy draw call is here to make sure that view 0 is cleared if no other draw calls are submitted to view 0.
+    cout << "[NukeBGFX]\t\t" << "Clear " << endl;
 	bgfx::touch(kClearView);
 	// Use debug font to print information about this example.
 	//bgfx::dbgTextClear();
@@ -94,6 +114,7 @@ int NukeBGFX::render() {
 			_rn();
 		}
 
+    cout << "[NukeBGFX]\t\t" << "Before debug " << endl;
 	//bgfx::dbgTextImage(bx::max<uint16_t>(uint16_t(width / 2 / 8), 20) - 20, bx::max<uint16_t>(uint16_t(height / 2 / 16), 6) - 6, 40, 12, s_logo, 160);
 	if (_debug) {
 		bgfx::dbgTextPrintf(0, 0, 0x0f, "Press F1 to toggle stats.");
@@ -106,7 +127,9 @@ int NukeBGFX::render() {
 		bgfx::setDebug(s_showStats ? BGFX_DEBUG_STATS : BGFX_DEBUG_TEXT);
 		// Advance to next frame. Process submitted rendering primitives.
 	}
+    cout << "[NukeBGFX]\t\t" << "Render " << endl;
 	bgfx::frame();
+    cout << "[NukeBGFX]\t\t" << "After render " << endl;
 	return 1;
 }
 
@@ -115,8 +138,8 @@ void NukeBGFX::renderObject(Mesh* mesh, Material* mat, Transform* transform) {
 }
 
 void NukeBGFX::loop() {
-	while (!glfwWindowShouldClose(this->window)) {
-		this->render();
+    while (!glfwWindowShouldClose(window)) {
+        render();
 	}
 }
 
@@ -170,10 +193,10 @@ void NukeBGFX::keyboard(int key, int scancode, int action, int mods) {
 		KeyBoard::getSingleton()->key(key, 0, 0);
 		break;
 	case GLFW_RELEASE:
-		KeyBoard::getSingleton()->keyup((unsigned char)glfwGetKeyName(key, 0), 0, 0);
+        KeyBoard::getSingleton()->keyup(glfwGetKeyName(key, 0)[0], 0, 0);
 		break;
 	case GLFW_REPEAT:
-		KeyBoard::getSingleton()->key((unsigned char)glfwGetKeyName(key, 0), 0, 0);
+        KeyBoard::getSingleton()->key((unsigned char)glfwGetKeyName(key, 0)[0], 0, 0);
 		break;
 	default:
 		break;
@@ -199,6 +222,7 @@ void NukeBGFX::mouseClick(int button, int action, int mods)
 
 void NukeBGFX::setCursorMode(int mode)
 {
+    glfwSetInputMode(window, mode, GLFW_CURSOR_NORMAL);
 }
 
 void NukeBGFX::rawMouse(double xpos, double ypos)
@@ -207,6 +231,10 @@ void NukeBGFX::rawMouse(double xpos, double ypos)
 
 void NukeBGFX::mouseEnterLeave(int entered)
 {
+}
+
+void NukeBGFX::setWindowShouldClose(){
+    glfwSetWindowShouldClose(window, GLFW_TRUE);
 }
 
 void mouseMove(double xpos, double ypos) {

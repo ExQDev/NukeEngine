@@ -2,7 +2,6 @@
 #ifndef NUKEE_EDITOR_INSTANCE_H
 #define NUKEE_EDITOR_INSTANCE_H
 #include "AppInstance.h"
-#include "EditorMenu/MenuStrip.h"
 #include <boost/container/list.hpp>
 #include <boost/tuple/tuple.hpp>
 #include <boost/container/map.hpp>
@@ -11,7 +10,9 @@ namespace bc = boost::container;
 namespace bst = boost;
 namespace btups = boost::tuples;
 
-class EditorInstance
+NUKEENGINE_API class EditorInstance;
+
+class EditorInstance : public AppInstance
 {
 protected:
 	EditorInstance();

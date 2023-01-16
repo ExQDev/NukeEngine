@@ -1,10 +1,13 @@
 #ifndef MOUSE_H
 #define MOUSE_H
+#include "NukeEngine.hpp"
 #include <boost/container/list.hpp>
 #include <boost/function.hpp>
 
 namespace bst = boost;
 namespace bc = boost::container;
+
+NUKEENGINE_API class Mouse;
 
 class Mouse
 {

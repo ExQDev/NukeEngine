@@ -31,11 +31,12 @@ macx{
 LIBS += -L/System/Library -L/Library -L~/Library -L/usr/local/lib -lGLFW -lboost_thread-mt -lboost_system -lboost_filesystem -llua -lassimp -lGLEW -lGLUT -framework OpenGL -framework GLUT -framework Cocoa -framework CoreFoundation
 }
 !macx{
-LIBS += -L/usr/local/lib -lglut -lGL -lGLU -lGLEW -pthread -lboost_thread -lboost_system -lboost_filesystem -llua -ldl -lassimp
+LIBS += -L/usr/local/lib -lglut -lGL -lGLU -lGLEW -pthread -lboost_thread -lboost_system -lboost_filesystem -llua -ldl -lassimp -lbgfx -lglfw -lvulkan
 }
 
-INCLUDEPATH += $$PWD/deps/imgui \
-    $$PWD/deps/LuaBridge/Source \
+INCLUDEPATH += $$PWD/include \
+    $$PWD/deps \
+    $$PWD/deps/imgui-1.89.1 \
     $$PWD/deps/glm \
 #    $$PWD/deps/bgfx/include \
     $$PWD/deps/bx/include
@@ -56,17 +57,81 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    deps/imgui/imgui.cpp \
-    deps/imgui/imgui_demo.cpp \
-    deps/imgui/imgui_draw.cpp \
-    API/Model/Vector.cpp \
+    deps/imgui-1.89.1/backends/imgui_impl_glfw.cpp \
+    deps/imgui-1.89.1/backends/imgui_impl_glut.cpp \
+    deps/imgui-1.89.1/backends/imgui_impl_opengl2.cpp \
+    deps/imgui-1.89.1/backends/imgui_impl_opengl3.cpp \
+    deps/imgui-1.89.1/backends/imgui_impl_vulkan.cpp \
+    deps/imgui-1.89.1/imgui.cpp \
+    deps/imgui-1.89.1/imgui_demo.cpp \
+    deps/imgui-1.89.1/imgui_draw.cpp \
+    deps/imgui-1.89.1/imgui_tables.cpp \
+    deps/imgui-1.89.1/imgui_widgets.cpp \
+    deps/imgui-1.89.1/misc/cpp/imgui_stdlib.cpp \
+    deps/imgui-1.89.1/misc/fonts/binary_to_compressed_c.cpp \
+    src/NukeEngine.cpp \
     deps/lodepng/lodepng_util.cpp \
     deps/lodepng/lodepng.cpp \
     deps/ImGuizmo/ImGuizmo.cpp \
-    deps/ImGuizmo/ImSequencer.cpp
+    deps/ImGuizmo/ImSequencer.cpp \
+    src/API/Model/Camera.cpp \
+    src/API/Model/Clock.cpp \
+    src/API/Model/Collider.cpp \
+    src/API/Model/Color.cpp \
+    src/API/Model/Component.cpp \
+    src/API/Model/Game.cpp \
+    src/API/Model/GameObject.cpp \
+    src/API/Model/ID.cpp \
+    src/API/Model/Layers.cpp \
+    src/API/Model/Light.cpp \
+    src/API/Model/Material.cpp \
+    src/API/Model/Math.cpp \
+    src/API/Model/Mesh.cpp \
+    src/API/Model/MeshRenderer.cpp \
+    src/API/Model/Module.cpp \
+    src/API/Model/Package.cpp \
+    src/API/Model/Resource.cpp \
+    src/API/Model/Scene.cpp \
+    src/API/Model/Script.cpp \
+    src/API/Model/Shader.cpp \
+    src/API/Model/Texture.cpp \
+    src/API/Model/Time.cpp \
+    src/API/Model/Transform.cpp \
+    src/API/Model/Vector.cpp \
+    src/API/Model/ray.cpp \
+    src/API/Model/resdb.cpp \
+    src/API/iGUI.cpp \
+    src/backend/lua.cpp \
+    src/config.cpp \
+    src/gui/gui.cpp \
+    src/import/assimporter.cpp \
+    src/input/keyboard.cpp \
+    src/input/mouse.cpp \
+    src/interface/AppInstance.cpp \
+    src/interface/EditorInstance.cpp \
+    src/interface/EditorMenu/MenuItem.cpp \
+    src/interface/EditorMenu/MenuStrip.cpp \
+    src/interface/Modular.cpp \
+    src/interface/NUKEEInteface.cpp \
+    src/render/irender.cpp \
+    src/render/opengl/nukeogl.cpp \
+    src/render/universal/nukebgfx.cpp
 
 HEADERS += \
-    backend/lua.h \
+    deps/imgui-1.89.1/backends/imgui_impl_glfw.h \
+    deps/imgui-1.89.1/backends/imgui_impl_glut.h \
+    deps/imgui-1.89.1/backends/imgui_impl_opengl2.h \
+    deps/imgui-1.89.1/backends/imgui_impl_opengl3.h \
+    deps/imgui-1.89.1/backends/imgui_impl_opengl3_loader.h \
+    deps/imgui-1.89.1/backends/imgui_impl_vulkan.h \
+    deps/imgui-1.89.1/imconfig.h \
+    deps/imgui-1.89.1/imgui.h \
+    deps/imgui-1.89.1/imgui_internal.h \
+    deps/imgui-1.89.1/imstb_rectpack.h \
+    deps/imgui-1.89.1/imstb_textedit.h \
+    deps/imgui-1.89.1/imstb_truetype.h \
+    deps/imgui-1.89.1/misc/cpp/imgui_stdlib.h \
+    include/NukeEngine.hpp \
     deps/glm/glm/common.hpp \
     deps/glm/glm/exponential.hpp \
     deps/glm/glm/ext.hpp \
@@ -90,75 +155,52 @@ HEADERS += \
     deps/glm/glm/vec3.hpp \
     deps/glm/glm/vec4.hpp \
     deps/glm/glm/vector_relational.hpp \
-    deps/imgui/imconfig.h \
-    deps/imgui/imgui.h \
-    deps/imgui/imgui_internal.h \
-    deps/imgui/stb_rect_pack.h \
-    deps/imgui/stb_textedit.h \
-    deps/imgui/stb_truetype.h \
-    deps/LuaBridge/Source/LuaBridge/detail/CFunctions.h \
-    deps/LuaBridge/Source/LuaBridge/detail/ClassInfo.h \
-    deps/LuaBridge/Source/LuaBridge/detail/Constructor.h \
-    deps/LuaBridge/Source/LuaBridge/detail/dump.h \
-    deps/LuaBridge/Source/LuaBridge/detail/FuncTraits.h \
-    deps/LuaBridge/Source/LuaBridge/detail/Iterator.h \
-    deps/LuaBridge/Source/LuaBridge/detail/LuaException.h \
-    deps/LuaBridge/Source/LuaBridge/detail/LuaHelpers.h \
-    deps/LuaBridge/Source/LuaBridge/detail/LuaRef.h \
-    deps/LuaBridge/Source/LuaBridge/detail/Namespace.h \
-    deps/LuaBridge/Source/LuaBridge/detail/Stack.h \
-    deps/LuaBridge/Source/LuaBridge/detail/TypeList.h \
-    deps/LuaBridge/Source/LuaBridge/detail/TypeTraits.h \
-    deps/LuaBridge/Source/LuaBridge/detail/Userdata.h \
-    deps/LuaBridge/Source/LuaBridge/LuaBridge.h \
-    deps/LuaBridge/Source/LuaBridge/RefCountedObject.h \
-    deps/LuaBridge/Source/LuaBridge/RefCountedPtr.h \
-    editor/editorui.h \
-    gui/gui.h \
-    input/keyboard.h \
-    input/mouse.h \
-    render/opengl/nukeogl.h \
-    render/universal/nukebgfx.h \
-    render/irender.h \
-    config.h \
-    API/Model/Camera.h \
-    API/Model/Clock.h \
-    API/Model/Collider.h \
-    API/Model/Color.h \
-    API/Model/Component.h \
-    API/Model/Game.h \
-    API/Model/GameObject.h \
-    API/Model/ID.h \
-    API/Model/Include.h \
-    API/Model/Layers.h \
-    API/Model/Light.h \
-    API/Model/Material.h \
-    API/Model/Math.h \
-    API/Model/Mesh.h \
-    API/Model/MeshRenderer.h \
-    API/Model/Module.h \
-    API/Model/Package.h \
-    API/Model/Resource.h \
-    API/Model/Scene.h \
-    API/Model/Script.h \
-    API/Model/Shader.h \
-    API/Model/Texture.h \
-    API/Model/Time.h \
-    API/Model/Transform.h \
-    API/Model/Vector.h \
-    interface/EditorMenu/MenuItem.h \
-    interface/EditorMenu/MenuStrip.h \
-    interface/EditorInstance.h \
-    interface/NUKEEInteface.h \
-    interface/Modular.h \
-    interface/AppInstance.h \
-    import/assimporter.h \
-    API/Model/resdb.h \
+    include/API/Model/Camera.h \
+    include/API/Model/Clock.h \
+    include/API/Model/Collider.h \
+    include/API/Model/Color.h \
+    include/API/Model/Component.h \
+    include/API/Model/Game.h \
+    include/API/Model/GameObject.h \
+    include/API/Model/ID.h \
+    include/API/Model/Layers.h \
+    include/API/Model/Light.h \
+    include/API/Model/Material.h \
+    include/API/Model/Math.h \
+    include/API/Model/Mesh.h \
+    include/API/Model/MeshRenderer.h \
+    include/API/Model/Module.h \
+    include/API/Model/Package.h \
+    include/API/Model/Resource.h \
+    include/API/Model/Scene.h \
+    include/API/Model/Script.h \
+    include/API/Model/Shader.h \
+    include/API/Model/Texture.h \
+    include/API/Model/Time.h \
+    include/API/Model/Transform.h \
+    include/API/Model/Vector.h \
+    include/API/Model/ray.h \
+    include/API/Model/resdb.h \
+    include/API/iGUI.h \
+    include/backend/lua.h \
+    include/config.hpp \
+    include/gui/gui.h \
+    include/import/assimporter.h \
+    include/input/keyboard.h \
+    include/input/mouse.h \
+    include/interface/AppInstance.h \
+    include/interface/EditorInstance.h \
+    include/interface/EditorMenu/MenuItem.h \
+    include/interface/EditorMenu/MenuStrip.h \
+    include/interface/Modular.h \
+    include/interface/NUKEEInteface.h \
+    include/render/irender.h \
+    include/render/opengl/nukeogl.h \
+    include/render/universal/nukebgfx.h \
     deps/lodepng/lodepng_util.h \
     deps/lodepng/lodepng.h \
     deps/ImGuizmo/ImGuizmo.h \
-    deps/ImGuizmo/ImSequencer.h \
-    API/Model/ray.h
+    deps/ImGuizmo/ImSequencer.h
 
 unix {
     target.path = /usr/lib
@@ -177,9 +219,26 @@ MOC_DIR = $$DESTDIR/.moc
 RCC_DIR = $$DESTDIR/.qrc
 UI_DIR = $$DESTDIR/.ui
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/deps/bgfx/build/osx64_clang/bin/release/ -lbgfx-shared-libDebug
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/deps/bgfx/build/osx64_clang/bin/debug/ -lbgfx-shared-libDebug
-else:unix: LIBS += -L$$PWD/deps/bgfx/build/osx64_clang/bin/ -lbgfx-shared-libDebug
+#win32:CONFIG(release, debug|release): LIBS += -L$$PWD/deps/bgfx/build/osx64_clang/bin/release/ -lbgfx-shared-libDebug
+#else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/deps/bgfx/build/osx64_clang/bin/debug/ -lbgfx-shared-libDebug
+#else:unix: LIBS += -L$$PWD/deps/bgfx/.build/linux64_gcc/bin/ -lbgfx-shared-libDebug
+#else:macx: LIBS += -L$$PWD/deps/bgfx/build/osx64_clang/bin/ -lbgfx-shared-libDebug
 
 INCLUDEPATH += $$PWD/deps/bgfx/include
 DEPENDPATH += $$PWD/deps/bgfx/include
+
+DISTFILES += \
+    deps/imgui-1.89.1/LICENSE.txt \
+    deps/imgui-1.89.1/backends/vulkan/generate_spv.sh \
+    deps/imgui-1.89.1/backends/vulkan/glsl_shader.frag \
+    deps/imgui-1.89.1/backends/vulkan/glsl_shader.vert \
+    deps/imgui-1.89.1/misc/README.txt \
+    deps/imgui-1.89.1/misc/cpp/README.txt \
+    deps/imgui-1.89.1/misc/fonts/Cousine-Regular.ttf \
+    deps/imgui-1.89.1/misc/fonts/DroidSans.ttf \
+    deps/imgui-1.89.1/misc/fonts/Karla-Regular.ttf \
+    deps/imgui-1.89.1/misc/fonts/ProggyClean.ttf \
+    deps/imgui-1.89.1/misc/fonts/ProggyTiny.ttf \
+    deps/imgui-1.89.1/misc/fonts/Roboto-Medium.ttf \
+    deps/imgui-1.89.1/misc/freetype/README.md \
+    src/batch-rename-h-to-cpp.bat
